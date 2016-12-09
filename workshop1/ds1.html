@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Introduction to Data Science</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Introduction to Data Science">
+  <meta name="author" content="Ahsan Ijaz">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Introduction to Data Science</h1>
+    <h2></h2>
+    <p>Ahsan Ijaz<br/>Ebryx</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <article data-timings="">
+    <style>
+em {
+  font-style: italic
+}
+</style>
+
+<h2>Topics</h2>
+
+<ul>
+<li>Linear Algebra</li>
+<li>Statistics</li>
+<li>Programming (R/Python/Scala)</li>
+<li>Visualization (ggplot2, D3.js, Tableau)</li>
+<li>Feature Selection</li>
+<li>Hypothesis testing</li>
+<li>Machine learning (Regression, Classification, Recommender Systems, Clustering, Deep learning)</li>
+<li>Reproducible documentation</li>
+<li>Big data (MapReduce, hadoop, Spark, Mesos/Yarn, ...)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Data Science Demand (LinkedIn Top skills)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= linkedinTopSkills.jpg  height=450></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Data Science Demand (Gartner 2013)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= gartner2013.png  height=450></p>
+
+<p><a href="http://www.gartner.com/newsroom/id/2575515">http://www.gartner.com/newsroom/id/2575515</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Data Science Demand (Gartner 2014)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= gartner2014.jpg  height=450></p>
+
+<p><a href="http://www.gartner.com/newsroom/id/2819918">http://www.gartner.com/newsroom/id/2819918</a> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Data Science Demand (Gartner 2015)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= gartner2015.png  height=450></p>
+
+<p>ref: <a href="http://www.gartner.com/newsroom/id/3114217">http://www.gartner.com/newsroom/id/3114217</a> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Data Science Demand (Gartner 2016)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= Gartner2016.png  height=450>
+<a href="http://www.gartner.com/newsroom/id/3412017">http://www.gartner.com/newsroom/id/3412017</a> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>General Skill set</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= datascience_skills_venn_diagram2.png  height=450></p>
+
+<p><a href="http://blogs.gartner.com/christi-eubanks/three-lessons-crossfit-taught-data-science1">http://blogs.gartner.com/christi-eubanks/three-lessons-crossfit-taught-data-science1</a> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Type of Data Scientists</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= dataScienceSkill.png  height=450></p>
+
+<p><a href="http://blog.udacity.com/2014/11/data-science-job-skills.html">http://blog.udacity.com/2014/11/data-science-job-skills.html</a> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Roadmap to Data Science</h2>
+  </hgroup>
+  <article data-timings="">
+    <div class="rimage center"><img src="RoadToDataScientist1.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" width="800px" height="500px" class="plot" /></div>
+
+<p><small>ref: <a href="http://nirvacana.com/thoughts/becoming-a-data-scientist/">http://nirvacana.com/thoughts/becoming-a-data-scientist/</a></small></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Data Science ToolBox</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>R programming language</li>
+<li>Python Language</li>
+<li>R Markdown, Knitr, Slidify, Shiny</li>
+<li>IPython notebooks</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Jeff HammerBach&#39;s Model for Data problems</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Identify problem</li>
+<li>Instrument data sources</li>
+<li>Collect data</li>
+<li>Prepare data (integrate, transform, clean, filter, aggregate)</li>
+<li>Build model</li>
+<li>Evaluate model</li>
+<li>Communicate results</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Our first Data science project!</h2>
+  </hgroup>
+  <article data-timings="">
+    <p></br></p>
+
+<p><center> question -&gt; input data -&gt; features -&gt; algorithm -&gt; parameters -&gt; evaluation  </center></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>SPAM Example</h2>
+  </hgroup>
+  <article data-timings="">
+    <p></br></p>
+
+<p><center> <font color="red"> question</font> -&gt; input data -&gt; features -&gt; algorithm -&gt; parameters -&gt; evaluation  </center></p>
+
+<p></br></p>
+
+<p><b>Start with a general question </b></p>
+
+<p>Can I automatically detect emails that are SPAM that are not?</p>
+
+<p><b> Make it concrete </b></p>
+
+<p>Can I use quantitative characteristics of the emails to classify them as SPAM/HAM?</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>SPAM Example</h2>
+  </hgroup>
+  <article data-timings="">
+    <p></br></p>
+
+<p><center> question -&gt; <font color="red">input data </font> -&gt; features -&gt; algorithm -&gt; parameters -&gt; evaluation  </center></p>
+
+<p><img class=center src=spam.png height='400' /></p>
+
+<p><a href="http://rss.acs.unt.edu/Rdoc/library/kernlab/html/spam.html">http://rss.acs.unt.edu/Rdoc/library/kernlab/html/spam.html</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>SPAM Example</h2>
+  </hgroup>
+  <article data-timings="">
+    <p></br></p>
+
+<p><center> question -&gt; input data  -&gt; <font color="red">features</font> -&gt; algorithm -&gt; parameters -&gt; evaluation  </center></p>
+
+<p></br></p>
+
+<p><b>
+Dear Sir, </p>
+
+<p>Can you send me your address so I can send you the invitation? </p>
+
+<p>Thanks,</p>
+
+<p>Ahsan
+</b></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>SPAM Example</h2>
+  </hgroup>
+  <article data-timings="">
+    <p></br></p>
+
+<p><center> question -&gt; input data  -&gt; <font color="red">features</font> -&gt; algorithm -&gt; parameters -&gt; evaluation  </center></p>
+
+<p></br></p>
+
+<p><b> </p>
+
+<p>Dear Sir, </p>
+
+<p>Can <rt>you</rt> send me your address so I can send <rt>you</rt> the invitation? </p>
+
+<p>Thanks,</p>
+
+<p>Ahsan
+</b></p>
+
+<p></br></p>
+
+<p>Frequency of you \(= 2/17 = 0.118\)</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>SPAM Example</h2>
+  </hgroup>
+  <article data-timings="">
+    <p></br></p>
+
+<p><center> question -&gt; input data  -&gt; <font color="red">features</font> -&gt; algorithm -&gt; parameters -&gt; evaluation  </center></p>
+
+<pre><code class="r">library(kernlab)
+data(spam)
+head(spam,3)
+</code></pre>
+
+<pre><code>  make address  all num3d  our over remove internet order mail receive will people report addresses
+1 0.00    0.64 0.64     0 0.32 0.00   0.00     0.00  0.00 0.00    0.00 0.64   0.00   0.00      0.00
+2 0.21    0.28 0.50     0 0.14 0.28   0.21     0.07  0.00 0.94    0.21 0.79   0.65   0.21      0.14
+3 0.06    0.00 0.71     0 1.23 0.19   0.19     0.12  0.64 0.25    0.38 0.45   0.12   0.00      1.75
+  free business email  you credit your font num000 money hp hpl george num650 lab labs telnet
+1 0.32     0.00  1.29 1.93   0.00 0.96    0   0.00  0.00  0   0      0      0   0    0      0
+2 0.14     0.07  0.28 3.47   0.00 1.59    0   0.43  0.43  0   0      0      0   0    0      0
+3 0.06     0.06  1.03 1.36   0.32 0.51    0   1.16  0.06  0   0      0      0   0    0      0
+  num857 data num415 num85 technology num1999 parts pm direct cs meeting original project   re  edu
+1      0    0      0     0          0    0.00     0  0   0.00  0       0     0.00       0 0.00 0.00
+2      0    0      0     0          0    0.07     0  0   0.00  0       0     0.00       0 0.00 0.00
+3      0    0      0     0          0    0.00     0  0   0.06  0       0     0.12       0 0.06 0.06
+  table conference charSemicolon charRoundbracket charSquarebracket charExclamation charDollar
+1     0          0          0.00            0.000                 0           0.778      0.000
+2     0          0          0.00            0.132                 0           0.372      0.180
+3     0          0          0.01            0.143                 0           0.276      0.184
+  charHash capitalAve capitalLong capitalTotal type
+1    0.000      3.756          61          278 spam
+2    0.048      5.114         101         1028 spam
+3    0.010      9.821         485         2259 spam
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>SPAM Example</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><center> question -&gt; input data  -&gt; features -&gt; <font color="red">algorithm</font> -&gt; parameters -&gt; evaluation  </center></p>
+
+<pre><code class="r">plot(density(spam$our[spam$type==&quot;nonspam&quot;]),
+     col=&quot;blue&quot;,main=&quot;&quot;,xlab=&quot;Frequency of &#39;your&#39;&quot;)
+lines(density(spam$our[spam$type==&quot;spam&quot;]),col=&quot;red&quot;)
+</code></pre>
+
+<div class="rimage center"><img src="fig/unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" class="plot" /></div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>SPAM Example</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><center> question -&gt; input data  -&gt; features -&gt; <font color="red">algorithm</font> -&gt; parameters -&gt; evaluation  </center></p>
+
+<p></br></br></p>
+
+<p><strong>Our algorithm</strong></p>
+
+<ul>
+<li>Find a value \(C\). </li>
+<li><strong>frequency of &#39;your&#39; \(>\) C</strong> predict &quot;spam&quot;</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>SPAM Example</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><center> question -&gt; input data  -&gt; features -&gt; algorithm -&gt; <font color="red">parameters</font> -&gt; evaluation  </center></p>
+
+<pre><code class="r">plot(density(spam$your[spam$type==&quot;nonspam&quot;]),
+     col=&quot;blue&quot;,main=&quot;&quot;,xlab=&quot;Frequency of &#39;your&#39;&quot;)
+lines(density(spam$your[spam$type==&quot;spam&quot;]),col=&quot;red&quot;)
+abline(v=0.5,col=&quot;black&quot;)
+</code></pre>
+
+<div class="rimage center"><img src="fig/unnamed-chunk-3-1.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" class="plot" /></div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:;">
+  <hgroup>
+    <h2>SPAM Example</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><center> question -&gt; input data  -&gt; features -&gt; algorithm -&gt; parameters -&gt; <font color="red">evaluation</font></center></p>
+
+<pre><code class="r">prediction &lt;- ifelse(spam$your &gt; 0.5,&quot;spam&quot;,&quot;nonspam&quot;)
+table(prediction,spam$type)
+</code></pre>
+
+<pre><code>
+prediction nonspam spam
+   nonspam    2112  468
+   spam        676 1345
+</code></pre>
+
+<p>Accuracy$ \approx 0.459 + 0.292 = 0.751$</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-22" style="background:;">
+  <hgroup>
+    <h2>Regression</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Linear Regression</li>
+<li>Multiple linear Regression</li>
+<li>Polynomial Regression</li>
+<li>Ridge Regression</li>
+<li>Lasso Regression</li>
+<li>Local/Kernel Regression</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-23" style="background:;">
+  <hgroup>
+    <h2>Classification problems</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Linear Classifier</li>
+<li>Logistic Regression</li>
+<li>Decision Trees</li>
+<li>Boosting</li>
+<li>Discussion about scaling of algorithms</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-24" style="background:;">
+  <hgroup>
+    <h2>Feature Selection</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Subset selection</li>
+<li>Greedy passes</li>
+<li>Basis selection</li>
+<li>Bias variance trade-off</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-25" style="background:;">
+  <hgroup>
+    <h2>Document retrieval and Clustering</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Nearest Neighbor</li>
+<li>K-means clustering</li>
+<li>Hierarchical Clustering</li>
+<li>Latent Dirichlet allocation</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-26" style="background:;">
+  <hgroup>
+    <h2>Recommender System</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Collaborative Filtering</li>
+<li>SVD and PCA</li>
+<li>Matrix factorization technique</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-27" style="background:;">
+  <hgroup>
+    <h2>Deep learning</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Examples of cross-learning</li>
+<li>Using deep features for image, text matching</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-28" style="background:;">
+  <hgroup>
+    <h2>Hypothesis Testing</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Normal distributions to t-distributions</li>
+<li>A/B testing scenarios </li>
+<li>Real world examples</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-29" style="background:;">
+  <hgroup>
+    <h2>Reproducible Documents</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>R Markdown example, embedding code and text</li>
+<li>IPython </li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-30" style="background:;">
+  <hgroup>
+    <h2>Big Data Paradigm</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>MapReduce</li>
+<li>Hadoop</li>
+<li>Spark</li>
+<li>Mesos/Yarn</li>
+<li>NoSql Databases</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Data Science Demand (LinkedIn Top skills)'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Data Science Demand (Gartner 2013)'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Data Science Demand (Gartner 2014)'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Data Science Demand (Gartner 2015)'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Data Science Demand (Gartner 2016)'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='General Skill set'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Type of Data Scientists'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Roadmap to Data Science'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Data Science ToolBox'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Jeff HammerBach&#39;s Model for Data problems'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Our first Data science project!'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='SPAM Example'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='SPAM Example'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='SPAM Example'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='SPAM Example'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='SPAM Example'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='SPAM Example'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='SPAM Example'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='SPAM Example'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='SPAM Example'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='Regression'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='Classification problems'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='Feature Selection'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='Document retrieval and Clustering'>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='Recommender System'>
+         26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='Deep learning'>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='Hypothesis Testing'>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='Reproducible Documents'>
+         29
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title='Big Data Paradigm'>
+         30
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

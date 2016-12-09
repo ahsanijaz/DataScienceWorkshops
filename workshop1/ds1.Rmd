@@ -1,0 +1,374 @@
+---
+title       : Introduction to Data Science
+subtitle    : 
+author      : Ahsan Ijaz
+job         : Ebryx
+# logo        : ebryx-logo.png
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow   # 
+# url:
+  # lib: ../../libraries
+  # assets: /home/ahsan/Personal/Workshop Machine learning/Workshop1
+widgets     : [mathjax]            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+embed : TRUE
+---
+
+```{r setup, cache = F, echo = F, message = F, warning = F, tidy = F}
+library(knitr)
+# make this an external chunk that can be included in any file
+options(width = 100)
+opts_chunk$set(message = F, error = F, warning = F, comment = NA, fig.align = 'center', dpi = 100, tidy = F, cache.path = '.cache/', fig.path = 'fig/')
+
+options(xtable.type = 'html')
+knit_hooks$set(inline = function(x) {
+  if(is.numeric(x)) {
+    round(x, getOption('digits'))
+  } else {
+    paste(as.character(x), collapse = ', ')
+  }
+})
+knit_hooks$set(plot = knitr:::hook_plot_html)
+```
+<style>
+em {
+  font-style: italic
+}
+</style>
+
+## Topics
+
+- Linear Algebra
+- Statistics
+- Programming (R/Python/Scala)
+- Visualization (ggplot2, D3.js, Tableau)
+- Feature Selection
+- Hypothesis testing
+- Machine learning (Regression, Classification, Recommender Systems, Clustering, Deep learning)
+- Reproducible documentation
+- Big data (MapReduce, hadoop, Spark, Mesos/Yarn, ...)
+
+---
+
+## Data Science Demand (LinkedIn Top skills)
+
+<img class="center" src= linkedinTopSkills.jpg  height=450>
+
+---
+
+## Data Science Demand (Gartner 2013)
+
+<img class="center" src= gartner2013.png  height=450>
+
+http://www.gartner.com/newsroom/id/2575515
+
+---
+
+## Data Science Demand (Gartner 2014)
+
+<img class="center" src= gartner2014.jpg  height=450>
+
+http://www.gartner.com/newsroom/id/2819918 
+
+---
+
+## Data Science Demand (Gartner 2015)
+<img class="center" src= gartner2015.png  height=450>
+
+ref: http://www.gartner.com/newsroom/id/3114217 
+
+---
+
+## Data Science Demand (Gartner 2016)
+
+<img class="center" src= Gartner2016.png  height=450>
+http://www.gartner.com/newsroom/id/3412017 
+
+---
+
+## General Skill set
+<img class="center" src= datascience_skills_venn_diagram2.png  height=450>
+
+http://blogs.gartner.com/christi-eubanks/three-lessons-crossfit-taught-data-science1 
+
+---
+
+## Type of Data Scientists
+<img class="center" src= dataScienceSkill.png  height=450>
+
+http://blog.udacity.com/2014/11/data-science-job-skills.html 
+
+---
+
+## Roadmap to Data Science
+
+```{r, out.width = "800px", out.height= "500px",echo=FALSE}
+knitr::include_graphics("RoadToDataScientist1.png")
+```
+<small>ref: http://nirvacana.com/thoughts/becoming-a-data-scientist/</small>
+
+---
+
+## Data Science ToolBox
+
+- R programming language
+- Python Language
+- R Markdown, Knitr, Slidify, Shiny
+- IPython notebooks
+
+---
+
+## Jeff HammerBach's Model for Data problems
+
+- Identify problem
+- Instrument data sources
+- Collect data
+- Prepare data (integrate, transform, clean, filter, aggregate)
+- Build model
+- Evaluate model
+- Communicate results
+
+---
+
+## Our first Data science project!
+
+</br>
+
+<center> question -> input data -> features -> algorithm -> parameters -> evaluation  </center>
+
+
+---
+
+## SPAM Example
+
+</br>
+
+<center> <font color="red"> question</font> -> input data -> features -> algorithm -> parameters -> evaluation  </center>
+
+</br>
+
+<b>Start with a general question </b>
+
+Can I automatically detect emails that are SPAM that are not?
+
+<b> Make it concrete </b>
+
+Can I use quantitative characteristics of the emails to classify them as SPAM/HAM?
+
+
+---
+
+## SPAM Example
+
+</br>
+
+<center> question -> <font color="red">input data </font> -> features -> algorithm -> parameters -> evaluation  </center>
+
+<img class=center src=spam.png height='400' />
+
+[http://rss.acs.unt.edu/Rdoc/library/kernlab/html/spam.html](http://rss.acs.unt.edu/Rdoc/library/kernlab/html/spam.html)
+
+
+
+---
+
+## SPAM Example
+
+</br>
+
+<center> question -> input data  -> <font color="red">features</font> -> algorithm -> parameters -> evaluation  </center>
+
+</br>
+
+
+
+<b>
+Dear Sir, 
+
+Can you send me your address so I can send you the invitation? 
+
+Thanks,
+
+Ahsan
+</b>
+
+
+
+
+---
+
+## SPAM Example
+
+</br>
+
+<center> question -> input data  -> <font color="red">features</font> -> algorithm -> parameters -> evaluation  </center>
+
+</br>
+
+<b> 
+
+Dear Sir, 
+
+Can <rt>you</rt> send me your address so I can send <rt>you</rt> the invitation? 
+
+Thanks,
+
+Ahsan
+</b>
+
+</br>
+
+Frequency of you $= 2/17 = 0.118$
+
+---
+
+## SPAM Example
+
+</br>
+
+<center> question -> input data  -> <font color="red">features</font> -> algorithm -> parameters -> evaluation  </center>
+
+
+```{r loadData}
+library(kernlab)
+data(spam)
+head(spam,3)
+
+```
+
+
+---
+
+## SPAM Example
+
+
+<center> question -> input data  -> features -> <font color="red">algorithm</font> -> parameters -> evaluation  </center>
+
+```{r,dependson="loadData",fig.height=3.5,fig.width=3.5}
+plot(density(spam$our[spam$type=="nonspam"]),
+     col="blue",main="",xlab="Frequency of 'your'")
+lines(density(spam$our[spam$type=="spam"]),col="red")
+```
+
+---
+
+## SPAM Example
+
+
+<center> question -> input data  -> features -> <font color="red">algorithm</font> -> parameters -> evaluation  </center>
+
+</br></br>
+
+__Our algorithm__
+
+* Find a value $C$. 
+* __frequency of 'your' $>$ C__ predict "spam"
+
+---
+
+## SPAM Example
+
+
+<center> question -> input data  -> features -> algorithm -> <font color="red">parameters</font> -> evaluation  </center>
+
+```{r,dependson="loadData",fig.height=3.5,fig.width=3.5}
+plot(density(spam$your[spam$type=="nonspam"]),
+     col="blue",main="",xlab="Frequency of 'your'")
+lines(density(spam$your[spam$type=="spam"]),col="red")
+abline(v=0.5,col="black")
+```
+
+---
+
+## SPAM Example
+
+
+<center> question -> input data  -> features -> algorithm -> parameters -> <font color="red">evaluation</font></center>
+
+```{r,dependson="loadData",fig.height=3.5,fig.width=3.5}
+prediction <- ifelse(spam$your > 0.5,"spam","nonspam")
+table(prediction,spam$type)
+```
+
+Accuracy$ \approx 0.459 + 0.292 = 0.751$
+
+---
+
+## Regression
+
+- Linear Regression
+- Multiple linear Regression
+- Polynomial Regression
+- Ridge Regression
+- Lasso Regression
+- Local/Kernel Regression
+
+---
+
+## Classification problems
+
+- Linear Classifier
+- Logistic Regression
+- Decision Trees
+- Boosting
+- Discussion about scaling of algorithms
+
+---
+
+## Feature Selection
+
+- Subset selection
+- Greedy passes
+- Basis selection
+- Bias variance trade-off
+
+---
+
+## Document retrieval and Clustering
+
+- Nearest Neighbor
+- K-means clustering
+- Hierarchical Clustering
+- Latent Dirichlet allocation
+
+---
+
+## Recommender System
+
+- Collaborative Filtering
+- SVD and PCA
+- Matrix factorization technique
+
+---
+
+## Deep learning
+
+- Examples of cross-learning
+- Using deep features for image, text matching
+
+---
+
+## Hypothesis Testing
+
+- Normal distributions to t-distributions
+- A/B testing scenarios 
+- Real world examples
+
+---
+
+## Reproducible Documents
+
+- R Markdown example, embedding code and text
+- IPython 
+
+---
+
+## Big Data Paradigm
+
+- MapReduce
+- Hadoop
+- Spark
+- Mesos/Yarn
+- NoSql Databases
+
