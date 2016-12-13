@@ -12,7 +12,6 @@ hitheme     : tomorrow   #
   # assets: /home/ahsan/Personal/Workshop Machine learning/Workshop1
 widgets     : [mathjax]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
-embed : TRUE
 ---
 
 
@@ -315,6 +314,59 @@ Accuracy$ \approx 0.459 + 0.292 = 0.751$
 
 ---
 
+## Applications of Machine Learning
+
+<img class="center" src= useCase.png  height=400>
+
+---
+
+## Case Studies
+<center>
+A case study approach to machine learning and data science.
+</center>
+
+---
+
+## Case Study 1, Regression:
+
+### <center> Prediction of House prices </center>
+
+<img class="center" src= housePrice.png  height=400>
+
+---
+
+
+## Case Study 2, Classification:
+
+### <center> Sentiment Analysis </center>
+
+<img class="center" src= sentimentAn.png  height=400>
+
+---
+
+## Case Study 3, Clustering :
+
+### <center> Document Retrieval </center>
+
+<img class="center" src= documentRet.png  height=400>
+
+---
+
+## Case Study 4, Recommender System (Matrix factorization):
+
+<img class="center" src= recommend.png  height=400>
+
+---
+
+## Case Study 5, Deep learning:
+
+### <center> Visual recommender system. </center>
+
+<img class="center" src= visualRecommend.png  height=400>
+
+---
+
+
 ## Regression
 
 - Linear Regression
@@ -330,7 +382,8 @@ Accuracy$ \approx 0.459 + 0.292 = 0.751$
 
 - Linear Classifier
 - Logistic Regression
-- Decision Trees
+- Decision Trees 
+- Bagging
 - Boosting
 - Discussion about scaling of algorithms
 
@@ -358,7 +411,7 @@ Accuracy$ \approx 0.459 + 0.292 = 0.751$
 
 - Collaborative Filtering
 - SVD and PCA
-- Matrix factorization technique
+- Matrix factorization 
 
 ---
 
@@ -371,7 +424,7 @@ Accuracy$ \approx 0.459 + 0.292 = 0.751$
 
 ## Hypothesis Testing
 
-- Normal distributions to t-distributions
+- t-distributions
 - A/B testing scenarios 
 - Real world examples
 
@@ -390,5 +443,5 @@ Accuracy$ \approx 0.459 + 0.292 = 0.751$
 - Hadoop
 - Spark
 - Mesos/Yarn
-- NoSql Databases
+- Sql to NoSql Databases
 
