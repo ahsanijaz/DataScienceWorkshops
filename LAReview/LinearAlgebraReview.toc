@@ -1,0 +1,10 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{Linear Algebra}{2}{0}{1}
+\beamer@subsectionintoc {1}{1}{Spaces}{2}{0}{1}
+\beamer@subsectionintoc {1}{2}{Definitions}{13}{0}{1}
+\beamer@subsectionintoc {1}{3}{Projections}{23}{0}{1}
+\beamer@subsectionintoc {1}{4}{Orthonormality}{56}{0}{1}
+\beamer@sectionintoc {2}{Transforms}{72}{0}{2}
+\beamer@subsectionintoc {2}{1}{Dot Product of Functions}{72}{0}{2}
+\beamer@subsectionintoc {2}{2}{Fourier series}{74}{0}{2}
+\beamer@subsectionintoc {2}{3}{Comparative Discussion}{77}{0}{2}
