@@ -94,6 +94,7 @@ Adding basis to regression.
 
 <img class="center" src= modelComplex.png height=450>
 
+## Notebook
 
 
 
