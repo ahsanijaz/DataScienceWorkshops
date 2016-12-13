@@ -1,0 +1,99 @@
+---
+title       : Regression Module 1
+subtitle    : 
+author      : Ahsan Ijaz
+job         : Ebryx
+# logo        : ebryx-logo.png
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow   # 
+# url:
+  # lib: ../../libraries
+  # assets: /home/ahsan/Personal/Workshop Machine learning/Workshop1
+widgets     : [mathjax]            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+embed : TRUE
+---
+
+```{r setup, cache = F, echo = F, message = F, warning = F, tidy = F}
+library(knitr)
+# make this an external chunk that can be included in any file
+options(width = 100)
+opts_chunk$set(message = F, error = F, warning = F, comment = NA, fig.align = 'center', dpi = 100, tidy = F, cache.path = '.cache/', fig.path = 'fig/')
+
+options(xtable.type = 'html')
+knit_hooks$set(inline = function(x) {
+  if(is.numeric(x)) {
+    round(x, getOption('digits'))
+  } else {
+    paste(as.character(x), collapse = ', ')
+  }
+})
+knit_hooks$set(plot = knitr:::hook_plot_html)
+```
+
+## Regression: Predicting house prices
+
+<img class="center" src= housePrice.png  height=450>
+
+---
+
+## Plotting recent sales
+
+<img class="center" src= regressionSimilarH.png height=450>
+
+---
+
+## Linear Regression
+
+<img class="center" src= fitLine.png height=450>
+
+---
+
+## Which line to choose
+
+<img class="center" src= whichLine.png height=450>
+
+Refer to plotLines.R for visualization
+
+---
+
+## Residual sum of squares (cost function)
+
+<img class="center" src= rss.png height=450>
+
+---
+
+## Final Prediction
+
+<img class="center" src= finalPred.png height=450>
+
+---
+
+## Quadratic relationship
+
+Adding basis to regression.
+
+<img class="center" src= quadRe.png height=450>
+
+---
+
+## Higher order functions  
+
+<img class="center" src= higherOrd.png height=450>
+
+---
+
+## Training, validation and testing sets
+
+<img class="center" src= trainTest.png height=450>
+
+---
+
+## Model complexity
+
+<img class="center" src= modelComplex.png height=450>
+
+
+
+
