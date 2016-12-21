@@ -5,9 +5,7 @@ date: ""
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+
 
 # Helpful Resources for Workshops
 
@@ -19,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Tutorials for R
 
-* [Swirl](http://swirlstats.com/students.html) is an excellent tutorial for learning R interactively in RStudio. Highly recommended. 
+* [Swir](http://swirlstats.com/students.html) is an excellent tutorial for learning R interactively in RStudio. Highly recommended. 
 
 ## Data science examples and technology landscape
 

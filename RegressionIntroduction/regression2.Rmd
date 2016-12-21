@@ -1,0 +1,141 @@
+---
+title       : Regression Module 2
+subtitle    : 
+author      : Ahsan Ijaz
+job         : Ebryx
+# logo        : ebryx-logo.png
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow   # 
+# url:
+  # lib: ../../libraries
+  # assets: /home/ahsan/Personal/Workshop Machine learning/Workshop1
+widgets     : [mathjax]            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+embed : TRUE
+---
+
+```{r setup, cache = F, echo = F, message = F, warning = F, tidy = F}
+library(knitr)
+# make this an external chunk that can be included in any file
+options(width = 100)
+opts_chunk$set(message = F, error = F, warning = F, comment = NA, fig.align = 'center', dpi = 100, tidy = F, cache.path = '.cache/', fig.path = 'fig/')
+
+options(xtable.type = 'html')
+knit_hooks$set(inline = function(x) {
+  if(is.numeric(x)) {
+    round(x, getOption('digits'))
+  } else {
+    paste(as.character(x), collapse = ', ')
+  }
+})
+knit_hooks$set(plot = knitr:::hook_plot_html)
+```
+
+## Residual sum of squares (cost function)
+
+<img class="center" src= rss.png height=450>
+
+---
+
+## Minimizing RSS
+$$ \min_{w_0,w_1}\sum_{i=1}^{N}(y_i - [w_0 + w_{1}x_i])^2 $$
+Finding minimum of a sample equation with respect to w:
+$$ y = 50 + (w-10)^2 $$
+
+```{r, echo=FALSE,fig.align='center',fig.width=4,fig.height=3.5}
+library(ggplot2)
+library(reshape2)
+w = seq(0,20)
+parabola = data.frame(input = w, parabola = 50 + (w-10)^2)
+
+# dat = melt(parabola,id.vars = 'input', variable.name = c('Equation'),value.name = 'value')
+
+ggplot(data = parabola, aes(x=input, y=parabola,color = "red")) + guides(colour=FALSE) +
+   geom_line(size = 2)  +
+  xlab("W variable") + ylab("Output of equation") + theme(text = element_text(size=23),plot.title = element_text(size = rel(1)))  + annotate("text", x = 10, y = 70, label = "50 + (w-10)^2", size = 8)
+
+```
+
+---
+
+## Gradient Descent 
+
+Minimizing  a sample equation:
+$$y = 50 + (w-10)^2 $$
+
+First Derivative:
+
+$$ \frac{d(y)}{dw} = 2(w-10) $$  
+
+```{r, echo=FALSE,fig.align='center',fig.width=4,fig.height=3.5}
+library(ggplot2)
+library(reshape2)
+w = seq(0,20)
+parabola = data.frame(input = w, parabola = 50 + (w-10)^2, derivative = 2*(w-10))
+
+dat = melt(parabola,id.vars = 'input', variable.name = c('Equation'),value.name = 'value')
+
+ggplot(data = dat, aes(x=input, y=value,group = Equation,colour = Equation)) + 
+   geom_line(size = 2) +  #  +   geom_vline(xintercept = 10) + geom_hline(yintercept = 50) + 
+  xlab("W variable") + ylab("Output of equation") + theme(text = element_text(size=23),plot.title = element_text(size = rel(1))) # + annotate("text", x = 10, y = 25, label = "50 + (w-10)^2", size = 8)
+
+```
+
+--- 
+
+## Example of varying parameter and gradient in RStudio
+
+```{r,eval=FALSE}
+
+library(manipulate)
+RSSmin <- function(W_v){
+  w = seq(0,20)
+  parabola = data.frame(input = w, parabola = 50 + (w-10)^2, derivative = 2*(w-10))
+  ggplot(data = parabola, aes(x=input, y=parabola,color = "red")) + 
+    guides(colour=FALSE) +
+   geom_line(size = 2)  +
+  xlab("W variable") + ylab("Output of equation") + 
+    theme(text = element_text(size=23),
+          plot.title = element_text(size = rel(1)))  +
+    annotate("text", x = 10, y = 25, label = paste("2*(w-10) =",
+                                                   as.character(2*(W_v-10))), size = 6) +
+    annotate("text", x = 10, y = 100, label = paste("RSS = ",
+                                                   as.character(50+(W_v-10)^2)), size = 6)
+}
+manipulate(RSSmin(W_v), W_v = slider(5, 15, step = 0.5))
+
+```
+
+---
+
+## Gradient Descent 
+
+$$ w_i = w_{i-1} - \zeta\times{}\nabla(\color{blue}{\textit{RSS}}) $$
+
+Remember from before that RSS is given by:
+
+$$\textit{RSS} = \sum_{i=1}^{N}(y_i - [\color{blue}{w_0} + \color{blue}{w_{1}}x_i])^2 $$
+
+Taking derivative w.r.t $w_0$ :
+
+$$ -2\sum_{i=1}^{N}(y_i - [w_0 + w_{1}x_i]) $$
+
+Taking derivative w.r.t $w_1$ :
+
+$$ -2\sum_{i=1}^{N}(y_i - [w_0 + w_{1}x_i])x_i $$
+
+---
+
+## Summarising Gradient Descent algorithm
+
+$$ \nabla\textit{RSS}(\color{blue}{w_0},\color{blue}{w_1}) = \begin{bmatrix}-2\sum_{i=1}^{N}(y_i - [\color{blue}{w_0} + \color{blue}{w_{1}}x_i]) \\ -2\sum_{i=1}^{N}(y_i - [\color{blue}{w_0} + \color{blue}{w_{1}}x_i])x_i \end{bmatrix} $$
+
+While not congverged:
+
+$$ \begin{bmatrix}w_0^{(t+1)} \\ w_1^{(t+1)} \end{bmatrix} = \begin{bmatrix}w_0^{(t)} \\ w_1^{(t)} \end{bmatrix} - \color{blue}{\nabla\textit{RSS}(w_0^{(t)},w_1^{(t)})} $$
+
+Convergence condition?
+
+
+
