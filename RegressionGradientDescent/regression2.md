@@ -23,6 +23,12 @@ embed : TRUE
 
 ---
 
+## Fitting of best Line
+
+<img class="center" src= bestLine.png height=450>
+
+---
+
 ## Minimizing RSS
 $$ \min_{w_0,w_1}\sum_{i=1}^{N}(y_i - [w_0 + w_{1}x_i])^2 $$
 Finding minimum of a sample equation with respect to w:
@@ -64,7 +70,7 @@ RSSmin <- function(W_v){
     annotate("text", x = 10, y = 100, label = paste("RSS = ",
                                                    as.character(50+(W_v-10)^2)), size = 6)
 }
-manipulate(RSSmin(W_v), W_v = slider(5, 15, step = 0.5))
+manipulate(RSSmin(W_v), W_v = slider(-5, 15, step = 0.5))
 ```
 
 ---
@@ -75,15 +81,15 @@ $$ w_i = w_{i-1} - \zeta\times{}\nabla(\color{blue}{\textit{RSS}}) $$
 
 Remember from before that RSS is given by:
 
-$$\textit{RSS} = \sum_{i=1}^{N}(y_i - [\color{blue}{w_0} + \color{blue}{w_{1}}x_i])^2 $$
+> - $$\textit{RSS} = \sum_{i=1}^{N}(y_i - [\color{blue}{w_0} + \color{blue}{w_{1}}x_i])^2 $$
 
-Taking derivative w.r.t $w_0$ :
+> - Taking derivative w.r.t $w_0$ :
 
-$$ -2\sum_{i=1}^{N}(y_i - [w_0 + w_{1}x_i]) $$
+> - $$ -2\sum_{i=1}^{N}(y_i - [w_0 + w_{1}x_i]) $$
 
-Taking derivative w.r.t $w_1$ :
+> - Taking derivative w.r.t $w_1$ :
 
-$$ -2\sum_{i=1}^{N}(y_i - [w_0 + w_{1}x_i])x_i $$
+> - $$ -2\sum_{i=1}^{N}(y_i - [w_0 + w_{1}x_i])x_i $$
 
 ---
 
@@ -97,5 +103,18 @@ $$ \begin{bmatrix}w_0^{(t+1)} \\ w_1^{(t+1)} \end{bmatrix} = \begin{bmatrix}w_0^
 
 Convergence condition?
 
+When $\nabla\textit{RSS} \leq \epsilon$.
 
+---
+
+## Discussion on learning Rate
+
+$$ w_i = w_{i-1} - \color{blue}{\zeta}\times{}\nabla(\textit{RSS}) $$
+
+> - A smaller value of learning rate = Too slow convergence rate
+> - Too large a value =  Convergence might never happen. 
+> - Decaying learning rate! $\zeta_n = \frac{\zeta_o}{t} $
+
+
+```
 

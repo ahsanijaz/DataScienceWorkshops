@@ -53,6 +53,17 @@
 
 <slide class="" id="slide-2" style="background:;">
   <hgroup>
+    <h2>Fitting of best Line</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= bestLine.png height=450></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
     <h2>Minimizing RSS</h2>
   </hgroup>
   <article data-timings="">
@@ -66,7 +77,7 @@ Finding minimum of a sample equation with respect to w:
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-3" style="background:;">
+<slide class="" id="slide-4" style="background:;">
   <hgroup>
     <h2>Gradient Descent</h2>
   </hgroup>
@@ -84,7 +95,7 @@ Finding minimum of a sample equation with respect to w:
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-4" style="background:;">
+<slide class="" id="slide-5" style="background:;">
   <hgroup>
     <h2>Example of varying parameter and gradient in RStudio</h2>
   </hgroup>
@@ -104,14 +115,14 @@ RSSmin &lt;- function(W_v){
     annotate(&quot;text&quot;, x = 10, y = 100, label = paste(&quot;RSS = &quot;,
                                                    as.character(50+(W_v-10)^2)), size = 6)
 }
-manipulate(RSSmin(W_v), W_v = slider(5, 15, step = 0.5))
+manipulate(RSSmin(W_v), W_v = slider(-5, 15, step = 0.5))
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-5" style="background:;">
+<slide class="" id="slide-6" style="background:;">
   <hgroup>
     <h2>Gradient Descent</h2>
   </hgroup>
@@ -120,21 +131,19 @@ manipulate(RSSmin(W_v), W_v = slider(5, 15, step = 0.5))
 
 <p>Remember from before that RSS is given by:</p>
 
-<p>\[\textit{RSS} = \sum_{i=1}^{N}(y_i - [\color{blue}{w_0} + \color{blue}{w_{1}}x_i])^2 \]</p>
-
-<p>Taking derivative w.r.t \(w_0\) :</p>
-
-<p>\[ -2\sum_{i=1}^{N}(y_i - [w_0 + w_{1}x_i]) \]</p>
-
-<p>Taking derivative w.r.t \(w_1\) :</p>
-
-<p>\[ -2\sum_{i=1}^{N}(y_i - [w_0 + w_{1}x_i])x_i \]</p>
+<ul class = "build incremental">
+<li><p>\[\textit{RSS} = \sum_{i=1}^{N}(y_i - [\color{blue}{w_0} + \color{blue}{w_{1}}x_i])^2 \]</p></li>
+<li><p>Taking derivative w.r.t \(w_0\) :</p></li>
+<li><p>\[ -2\sum_{i=1}^{N}(y_i - [w_0 + w_{1}x_i]) \]</p></li>
+<li><p>Taking derivative w.r.t \(w_1\) :</p></li>
+<li><p>\[ -2\sum_{i=1}^{N}(y_i - [w_0 + w_{1}x_i])x_i \]</p></li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-6" style="background:;">
+<slide class="" id="slide-7" style="background:;">
   <hgroup>
     <h2>Summarising Gradient Descent algorithm</h2>
   </hgroup>
@@ -146,6 +155,27 @@ manipulate(RSSmin(W_v), W_v = slider(5, 15, step = 0.5))
 <p>\[ \begin{bmatrix}w_0^{(t+1)} \\ w_1^{(t+1)} \end{bmatrix} = \begin{bmatrix}w_0^{(t)} \\ w_1^{(t)} \end{bmatrix} - \color{blue}{\nabla\textit{RSS}(w_0^{(t)},w_1^{(t)})} \]</p>
 
 <p>Convergence condition?</p>
+
+<p>When \(\nabla\textit{RSS} \leq \epsilon\).</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Discussion on learning Rate</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>\[ w_i = w_{i-1} - \color{blue}{\zeta}\times{}\nabla(\textit{RSS}) \]</p>
+
+<ul class = "build incremental">
+<li>A smaller value of learning rate = Too slow convergence rate</li>
+<li>Too large a value =  Convergence might never happen. </li>
+<li>Decaying learning rate! $\zeta_n = \frac{\zeta_o}{t} $</li>
+</ul>
+
+<pre><code></code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -163,32 +193,44 @@ manipulate(RSSmin(W_v), W_v = slider(5, 15, step = 0.5))
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Minimizing RSS'>
+        data-slide=2 title='Fitting of best Line'>
          2
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Gradient Descent'>
+        data-slide=3 title='Minimizing RSS'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Example of varying parameter and gradient in RStudio'>
+        data-slide=4 title='Gradient Descent'>
          4
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='Gradient Descent'>
+        data-slide=5 title='Example of varying parameter and gradient in RStudio'>
          5
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='Summarising Gradient Descent algorithm'>
+        data-slide=6 title='Gradient Descent'>
          6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Summarising Gradient Descent algorithm'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Discussion on learning Rate'>
+         8
       </a>
     </li>
   </ul>
