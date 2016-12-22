@@ -145,6 +145,30 @@ manipulate(RSSmin(W_v), W_v = slider(-5, 15, step = 0.5))
 
 <slide class="" id="slide-7" style="background:;">
   <hgroup>
+    <h2>Gradient Descent implementation (Simple case)</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">gradient &lt;- function(w){
+  2*(w-10)
+}
+w_old = 20
+zeta = 0.01
+i = 0
+w_values = c()
+while(abs(gradient(w_old))&gt;0.5){
+  w_new = w_old - (zeta*gradient(w_old))
+  w_old = w_new
+  w_values &lt;- c(w_values,w_old)
+  i = i+1
+}
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
     <h2>Summarising Gradient Descent algorithm</h2>
   </hgroup>
   <article data-timings="">
@@ -152,7 +176,7 @@ manipulate(RSSmin(W_v), W_v = slider(-5, 15, step = 0.5))
 
 <p>While not congverged:</p>
 
-<p>\[ \begin{bmatrix}w_0^{(t+1)} \\ w_1^{(t+1)} \end{bmatrix} = \begin{bmatrix}w_0^{(t)} \\ w_1^{(t)} \end{bmatrix} - \color{blue}{\nabla\textit{RSS}(w_0^{(t)},w_1^{(t)})} \]</p>
+<p>\[ \begin{bmatrix}w_0^{(t+1)} \\ w_1^{(t+1)} \end{bmatrix} = \begin{bmatrix}w_0^{(t)} \\ w_1^{(t)} \end{bmatrix} - \zeta\color{blue}{\nabla\textit{RSS}(w_0^{(t)},w_1^{(t)})} \]</p>
 
 <p>Convergence condition?</p>
 
@@ -162,7 +186,7 @@ manipulate(RSSmin(W_v), W_v = slider(-5, 15, step = 0.5))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-8" style="background:;">
+<slide class="" id="slide-9" style="background:;">
   <hgroup>
     <h2>Discussion on learning Rate</h2>
   </hgroup>
@@ -223,14 +247,20 @@ manipulate(RSSmin(W_v), W_v = slider(-5, 15, step = 0.5))
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='Summarising Gradient Descent algorithm'>
+        data-slide=7 title='Gradient Descent implementation (Simple case)'>
          7
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='Discussion on learning Rate'>
+        data-slide=8 title='Summarising Gradient Descent algorithm'>
          8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Discussion on learning Rate'>
+         9
       </a>
     </li>
   </ul>

@@ -133,13 +133,31 @@ Remember from before that RSS is given by:
 
 ---
 
+## Gradient Descent implementation (Simple case)
+```{r,eval=FALSE}
+gradient <- function(w){
+  2*(w-10)
+}
+w_old = 20
+zeta = 0.01
+i = 0
+w_values = c()
+while(abs(gradient(w_old))>0.5){
+  w_new = w_old - (zeta*gradient(w_old))
+  w_old = w_new
+  w_values <- c(w_values,w_old)
+  i = i+1
+}
+```
+
+---
 ## Summarising Gradient Descent algorithm
 
 $$ \nabla\textit{RSS}(\color{blue}{w_0},\color{blue}{w_1}) = \begin{bmatrix}-2\sum_{i=1}^{N}(y_i - [\color{blue}{w_0} + \color{blue}{w_{1}}x_i]) \\ -2\sum_{i=1}^{N}(y_i - [\color{blue}{w_0} + \color{blue}{w_{1}}x_i])x_i \end{bmatrix} $$
 
 While not congverged:
 
-$$ \begin{bmatrix}w_0^{(t+1)} \\ w_1^{(t+1)} \end{bmatrix} = \begin{bmatrix}w_0^{(t)} \\ w_1^{(t)} \end{bmatrix} - \color{blue}{\nabla\textit{RSS}(w_0^{(t)},w_1^{(t)})} $$
+$$ \begin{bmatrix}w_0^{(t+1)} \\ w_1^{(t+1)} \end{bmatrix} = \begin{bmatrix}w_0^{(t)} \\ w_1^{(t)} \end{bmatrix} - \zeta\color{blue}{\nabla\textit{RSS}(w_0^{(t)},w_1^{(t)})} $$
 
 Convergence condition?
 
