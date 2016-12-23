@@ -199,7 +199,81 @@ while(abs(gradient(w_old))&gt;0.5){
 <li>Decaying learning rate! $\zeta_n = \frac{\zeta_o}{t} $</li>
 </ul>
 
-<pre><code></code></pre>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Implementation of gradient descent (data generation and helper functions)</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">x = seq(0,40)
+dat &lt;- data.frame(input = x, output = 14+ 10*x)
+prediction &lt;- function(w0,w1,input){
+  w0+w1*input
+}
+error &lt;- function(actualValues, predictions){
+  actualValues - predictions
+}
+gradientW0 &lt;- function(error){
+  -2*sum(error)
+}
+gradientW1 &lt;- function(error,input){
+  -2*sum(error*input)
+}
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Implementation of gradient descent</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">grad0 = 10
+grad1 = 10
+w0old = 0
+w1old = 0 
+zeta = 0.0001
+while( (abs(grad0)+abs(grad1))&gt;0.5 ){
+  predictions = prediction(w0old,w1old,dat$input)
+  errors = error(dat$output, predictions)
+  grad0 = gradientW0(errors)
+  grad1 = gradientW1(errors,dat$input)
+  w0new = w0old - zeta*grad0
+  w1new = w1old - zeta*grad1
+  w0old = w0new
+  w1old = w1new
+}
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Implementation of stochastic gradient descent</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">while( (abs(grad0)+abs(grad1))&gt;0.5 ){
+  for(i in 1:length(dat$input)){
+    predictions = prediction(w0old,w1old,dat$input[i])
+    errors = error(dat$output[i], predictions)
+    grad0 = gradientW0(errors)
+    grad1 = gradientW1(errors,dat$input[i])  
+    w0new = w0old - zeta*grad0
+    w1new = w1old - zeta*grad1
+    w0old = w0new
+    w1old = w1new
+    print(paste(w0old,w1old))
+  }
+
+}
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -261,6 +335,24 @@ while(abs(gradient(w_old))&gt;0.5){
       <a href="#" target="_self" rel='tooltip' 
         data-slide=9 title='Discussion on learning Rate'>
          9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Implementation of gradient descent (data generation and helper functions)'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Implementation of gradient descent'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Implementation of stochastic gradient descent'>
+         12
       </a>
     </li>
   </ul>

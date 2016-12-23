@@ -15,7 +15,22 @@ mode        : selfcontained # {standalone, draft}
 embed : TRUE
 ---
 
+```{r setup, cache = F, echo = F, message = F, warning = F, tidy = F}
+library(knitr)
+# make this an external chunk that can be included in any file
+options(width = 100)
+opts_chunk$set(message = F, error = F, warning = F, comment = NA, fig.align = 'center', dpi = 100, tidy = F, cache.path = '.cache/', fig.path = 'fig/')
 
+options(xtable.type = 'html')
+knit_hooks$set(inline = function(x) {
+  if(is.numeric(x)) {
+    round(x, getOption('digits'))
+  } else {
+    paste(as.character(x), collapse = ', ')
+  }
+})
+knit_hooks$set(plot = knitr:::hook_plot_html)
+```
 
 ## Residual sum of squares (cost function)
 
@@ -34,7 +49,19 @@ $$ \min_{w_0,w_1}\sum_{i=1}^{N}(y_i - [w_0 + w_{1}x_i])^2 $$
 Finding minimum of a sample equation with respect to w:
 $$ y = 50 + (w-10)^2 $$
 
-<div class="rimage center"><img src="fig/unnamed-chunk-1-1.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" class="plot" /></div>
+```{r, echo=FALSE,fig.align='center',fig.width=4,fig.height=3.5}
+library(ggplot2)
+library(reshape2)
+w = seq(0,20)
+parabola = data.frame(input = w, parabola = 50 + (w-10)^2)
+
+# dat = melt(parabola,id.vars = 'input', variable.name = c('Equation'),value.name = 'value')
+
+ggplot(data = parabola, aes(x=input, y=parabola,color = "red")) + guides(colour=FALSE) +
+   geom_line(size = 2)  +
+  xlab("W variable") + ylab("Output of equation") + theme(text = element_text(size=23),plot.title = element_text(size = rel(1)))  + annotate("text", x = 10, y = 70, label = "50 + (w-10)^2", size = 8)
+
+```
 
 ---
 
@@ -47,14 +74,26 @@ First Derivative:
 
 $$ \frac{d(y)}{dw} = 2(w-10) $$  
 
-<div class="rimage center"><img src="fig/unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" class="plot" /></div>
+```{r, echo=FALSE,fig.align='center',fig.width=4,fig.height=3.5}
+library(ggplot2)
+library(reshape2)
+w = seq(0,20)
+parabola = data.frame(input = w, parabola = 50 + (w-10)^2, derivative = 2*(w-10))
+
+dat = melt(parabola,id.vars = 'input', variable.name = c('Equation'),value.name = 'value')
+
+ggplot(data = dat, aes(x=input, y=value,group = Equation,colour = Equation)) + 
+   geom_line(size = 2) +  #  +   geom_vline(xintercept = 10) + geom_hline(yintercept = 50) + 
+  xlab("W variable") + ylab("Output of equation") + theme(text = element_text(size=23),plot.title = element_text(size = rel(1))) # + annotate("text", x = 10, y = 25, label = "50 + (w-10)^2", size = 8)
+
+```
 
 --- 
 
 ## Example of varying parameter and gradient in RStudio
 
+```{r,eval=FALSE}
 
-```r
 library(manipulate)
 RSSmin <- function(W_v){
   w = seq(0,20)
@@ -71,6 +110,7 @@ RSSmin <- function(W_v){
                                                    as.character(50+(W_v-10)^2)), size = 6)
 }
 manipulate(RSSmin(W_v), W_v = slider(-5, 15, step = 0.5))
+
 ```
 
 ---
@@ -94,8 +134,7 @@ Remember from before that RSS is given by:
 ---
 
 ## Gradient Descent implementation (Simple case)
-
-```r
+```{r,eval=FALSE}
 gradient <- function(w){
   2*(w-10)
 }
@@ -134,6 +173,67 @@ $$ w_i = w_{i-1} - \color{blue}{\zeta}\times{}\nabla(\textit{RSS}) $$
 > - Too large a value =  Convergence might never happen. 
 > - Decaying learning rate! $\zeta_n = \frac{\zeta_o}{t} $
 
+---
 
+## Implementation of gradient descent (data generation and helper functions)
+
+```{r,eval=FALSE}
+x = seq(0,40)
+dat <- data.frame(input = x, output = 14+ 10*x)
+prediction <- function(w0,w1,input){
+  w0+w1*input
+}
+error <- function(actualValues, predictions){
+  actualValues - predictions
+}
+gradientW0 <- function(error){
+  -2*sum(error)
+}
+gradientW1 <- function(error,input){
+  -2*sum(error*input)
+}
+```
+
+---
+
+## Implementation of gradient descent
+
+```{r,eval=FALSE}
+grad0 = 10
+grad1 = 10
+w0old = 0
+w1old = 0 
+zeta = 0.0001
+while( (abs(grad0)+abs(grad1))>0.5 ){
+  predictions = prediction(w0old,w1old,dat$input)
+  errors = error(dat$output, predictions)
+  grad0 = gradientW0(errors)
+  grad1 = gradientW1(errors,dat$input)
+  w0new = w0old - zeta*grad0
+  w1new = w1old - zeta*grad1
+  w0old = w0new
+  w1old = w1new
+}
+```
+
+---
+
+## Implementation of stochastic gradient descent
+
+```{r,eval=FALSE}
+while( (abs(grad0)+abs(grad1))>0.5 ){
+  for(i in 1:length(dat$input)){
+    predictions = prediction(w0old,w1old,dat$input[i])
+    errors = error(dat$output[i], predictions)
+    grad0 = gradientW0(errors)
+    grad1 = gradientW1(errors,dat$input[i])  
+    w0new = w0old - zeta*grad0
+    w1new = w1old - zeta*grad1
+    w0old = w0new
+    w1old = w1new
+    print(paste(w0old,w1old))
+  }
+  
+}
 ```
 

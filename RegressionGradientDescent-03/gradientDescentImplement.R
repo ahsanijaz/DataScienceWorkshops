@@ -1,6 +1,6 @@
 library(ggplot2)
 x = seq(0,30)
-dat = data.frame(input = x, output = (3*x + 7 + rnorm(length(x),0,0.5)))
+dat = data.frame(input = x, output = (7 + 3*x))
 
 predictions <- function(w0,w1,input){
   predictions = w0 + w1*input
@@ -21,7 +21,7 @@ gradientw1 <- function(error,input){
 w0_old = -100
 w1_old = 0
 
-zeta = 0.0001
+zeta = 0.001
 
 grad0 = 10
 grad1 = 10
@@ -37,4 +37,6 @@ while((abs(grad0) + abs(grad1)) > 0.5){
   w1_old = w1_new
   print(paste(w0_old,w1_old))
 }
+
+
 
