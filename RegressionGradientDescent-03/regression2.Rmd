@@ -29,6 +29,7 @@ knit_hooks$set(inline = function(x) {
     paste(as.character(x), collapse = ', ')
   }
 })
+
 knit_hooks$set(plot = knitr:::hook_plot_html)
 ```
 

@@ -1,4 +1,5 @@
 library(ggplot2)
+
 x = seq(0,30)
 dat = data.frame(input = x, output = (7 + 3*x))
 
@@ -17,6 +18,7 @@ gradientw0 <- function(error){
 gradientw1 <- function(error,input){
   -2*sum(error*input)  
 }
+
 
 w0_old = -100
 w1_old = 0

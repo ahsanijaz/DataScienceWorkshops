@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Regression Module 2</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Regression Module 2">
+  <meta name="author" content="Ahsan Ijaz">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Regression Module 2</h1>
+    <h2></h2>
+    <p>Ahsan Ijaz<br/>Ebryx</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Model Evaluation</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= advertisingSales.png height=250></p>
+
+<ul class = "build incremental">
+<li>Making predictions using model</li>
+<li>Evaluating loss</li>
+<li>Remember RSS? 
+\[\textit{RSS} = \sum_{i=1}^{N}(y_i - [\color{blue}{w_0} + \color{blue}{w_{1}}x_i])^2 \]</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Loss function formalization</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul class = "build incremental">
+<li>RSS or squared loss using testing data</li>
+<li>Root mean square error on testing data
+\[\textit{RMSE} = \sqrt {\frac{1}{N}\sum_{i=1}^{N}(y_i - [w_0 + w_{1}x_i])^2} \]</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Training error vs model complexity</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Constant model: Only \(w_0\) parameter used.</p>
+
+<p><img class="center" src= modelCom1.png height=400></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Training error vs model complexity</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Linear model: \(y = w_0 + w_1x\)</p>
+
+<p><img class="center" src= modelCom2.png height=400></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Training error vs model complexity</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Quadratic model: \(y = w_0 + w_1x + w_2x^2\)</p>
+
+<p><img class="center" src= modelCom3.png height=400></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Training error vs model complexity</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= modelCom4.png height=400></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Training error vs model complexity</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Training error decreases as model complexity increases.</p>
+
+<p><img class="center" src= modelCompC.png height=450></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Training error vs model complexity</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Is a complex model better?
+<img class="center" src= modelCom4.png height=400></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Training and testing data</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Loss function calculation using testing data
+<img class="center" src= trainTest.png height=450></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Training and testing data</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Training and testing error with model complexity.
+<img class="center" src= model_complexityTest.png height=450></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>K-Nearest neighbors-model complexity</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul class = "build incremental">
+<li>Identify K nearest points to the test observation represented by \(\mathbb{N_0}\)</li>
+<li>Calculates conditional probability of points belonging to class j</li>
+<li>\[\textit{Pr}(Y=j|X=x_0) = \frac{1}{K}\sum_{I\in\mathbb{N}_0}I(y_i = j)\]
+Here \(x_0\) is the test observation, \(K\) is positive integer.
+<img class="center" src= knnExpl.png height=300></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>K-Nearest neighbors-model with k = 10</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= knn10.png height=450>
+Black line indiates the KNN decision boundary with K = 10. The optimum decision boundary is shown as purple dashed line.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>K-Nearest neighbors-model with k = 1 and k = 100</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= knn1-100.png height=450>
+Black curves indiates the KNN decision boundary with K = 1 and K = 100. The optimum decision boundary is shown as purple dashed line. With K = 1, we have an overly flexible decision boundary. With K = 100, it is not sufficiently flexible.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>Training vs testing with increasing complexity on KNN</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= knntesttrain.png height=450></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Model Evaluation'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Loss function formalization'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Training error vs model complexity'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Training error vs model complexity'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Training error vs model complexity'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Training error vs model complexity'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Training error vs model complexity'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Training error vs model complexity'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Training and testing data'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Training and testing data'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='K-Nearest neighbors-model complexity'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='K-Nearest neighbors-model with k = 10'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='K-Nearest neighbors-model with k = 1 and k = 100'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Training vs testing with increasing complexity on KNN'>
+         14
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
