@@ -1,5 +1,5 @@
 ---
-title       : Regression Module 2
+title       : Model Selection
 subtitle    : 
 author      : Ahsan Ijaz
 job         : Ebryx

@@ -1,5 +1,5 @@
 ---
-title       : Regression Module 2
+title       : Model Selection
 subtitle    : 
 author      : Ahsan Ijaz
 job         : Ebryx
@@ -9,7 +9,7 @@ highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow   # 
 # url:
   # lib: ../../libraries
-  # assets: /home/ahsan/Personal/Workshop Machine learning/Workshop1
+  # assets: /home/ahsan/Personal/Workshop Machine learning/Workshop1 
 widgets     : [mathjax]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 embed : TRUE
