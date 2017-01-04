@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Manipulation of Big data</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Manipulation of Big data">
+  <meta name="author" content="Ahsan Ijaz">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Manipulation of Big data</h1>
+    <h2></h2>
+    <p>Ahsan Ijaz<br/>Ebryx</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h1>Four dimensions of Data Science</h1>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Breadth</li>
+<li>Depth</li>
+<li>Scale</li>
+<li>Target</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Breadth</h2>
+  </hgroup>
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th>Tools</th>
+<th>Abstraction</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Hadoop</td>
+<td>MapReduce</td>
+</tr>
+<tr>
+<td>PostgreSQL</td>
+<td>Relational Algebra</td>
+</tr>
+<tr>
+<td>glm in R</td>
+<td>Logistic regression</td>
+</tr>
+<tr>
+<td>Tableau</td>
+<td>InfoVis</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Depth</h2>
+  </hgroup>
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th>Structures</th>
+<th>Statistics</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Management</td>
+<td>Linear Algebra</td>
+</tr>
+<tr>
+<td>Relational Algebra</td>
+<td>Analysis</td>
+</tr>
+<tr>
+<td>Standards</td>
+<td>Ad hoc files</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Scale</h2>
+  </hgroup>
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th>Desktop</th>
+<th>Cloud</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Main memory</td>
+<td>Distributed</td>
+</tr>
+<tr>
+<td>R</td>
+<td>Hadoop</td>
+</tr>
+<tr>
+<td>Local files</td>
+<td>S3, Azure...</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Target</h2>
+  </hgroup>
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th>Hackers</th>
+<th>Analysts</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>assume proficiency in R, Python</td>
+<td>No programming knowledge</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>What is big data?</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Volume</h3>
+
+<ul>
+<li>The size of data</li>
+</ul>
+
+<h3>Velocity</h3>
+
+<ul>
+<li>Latency of data processing to interactivity</li>
+</ul>
+
+<h3>Variety</h3>
+
+<ul>
+<li>The diversity of sources, formats, quality, structures</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Databases</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul class = "build incremental">
+<li>Sharing
+
+<ul>
+<li>Concurrent access to multiple users</li>
+</ul></li>
+<li>Data model enforcement
+
+<ul>
+<li>Make sure all applications see clean, organized data</li>
+</ul></li>
+<li>Scale
+
+<ul>
+<li>work with datasets too large to fit in memory</li>
+<li>Complexity hiding interface</li>
+</ul></li>
+<li>Flexibility
+
+<ul>
+<li>use the data in new, unexpected ways</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Selection of a database</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul class = "build incremental">
+<li>How is data physically organized on disk?</li>
+<li>What kinds of queries are efficient on this organization?</li>
+<li>How hard it is to update/add new data? (Organization for reading data might not be good for writing data fast)</li>
+<li>what happens with Adhoc queries?</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Relational databases</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul class = "build incremental">
+<li><p>Activities of users at terminals and most application programs should remain unaffected <color style="color:blue;"> when the internal representation of data is changed </color> and even when some aspects of the external representations are changed.</p></li>
+<li><p>Key idea: Programs that manipulate tabular data exhibit an algebric structure allowing reasoning and manipulation independently of physical data representation. <color style="color:blue;"> Physical data independence </color></p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Scalability</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Operationally</h3>
+
+<ul class = "build incremental">
+<li>In the past: <color style="color:blue;"> <b> Works even if data doesn&#39;t fit in memory </b> </color></li>
+<li>Now: <color style="color:blue;"> <b> Can use 1000s of cheap computers to operate </b> </color></li>
+</ul>
+
+<h3>Algorithmically</h3>
+
+<ul class = "build incremental">
+<li>In the past: <color style="color:blue;"> <b> Find a polynomial time algorithm that requires no more than \(N^m\) operations </b> </color></li>
+<li>Now: <color style="color:blue;"> <b> If you have N data items, require no more than \(\frac{N^m}{k}\) operations for very large \(k\) </b> </color></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Data parallel algorithms</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Convert all images from TIFF to PNG
+<img class="center" src= pleasParallel.png height=400></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Data parallel algorithms</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Run 1000s of simulations.</p>
+
+<p><img class="center" src= parallel2.png height=400></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>Data parallel algorithms</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Most frequent word in each document. </p>
+
+<p><img class="center" src= parallel3.png height=410></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>Data parallel algorithms</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Histogram of words in each document.</p>
+
+<p><img class="center" src= parallel4.png height=400></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>So what can we see?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul class = "build incremental">
+<li>A function that <color style="color:blue;"> maps </color> TIFF into PNG images.</li>
+<li>A function that <color style="color:blue;"> maps </color> parameters to simulation.</li>
+<li>A function that <color style="color:blue;"> maps </color> a document to its most common word.</li>
+<li>A function that <color style="color:blue;"> maps </color> a document to word frequencies.</li>
+<li>what if we want to compute the frequencies across all documents?</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>MapReduce Idea:</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Computing frequencies across all documents.</h3>
+
+<p><img class="center" src= mr2.png height=400></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Four dimensions of Data Science'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Breadth'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Depth'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Scale'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Target'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='What is big data?'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Databases'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Selection of a database'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Relational databases'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Scalability'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Data parallel algorithms'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Data parallel algorithms'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Data parallel algorithms'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Data parallel algorithms'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='So what can we see?'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='MapReduce Idea:'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='NA'>
+         17
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
