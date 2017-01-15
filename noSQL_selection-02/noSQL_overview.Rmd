@@ -1,0 +1,264 @@
+---
+title       : NoSQL 
+subtitle    : 
+author      : Ahsan Ijaz
+job         : Ebryx
+# logo        : ebryx-logo.png
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow   # 
+# url:
+  # lib: ../../libraries
+  # assets: /home/ahsan/Personal/Workshop Machine learning/Workshop1 
+widgets     : [mathjax]            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+embed : TRUE
+---
+
+```{r setup, cache = F, echo = F, message = F, warning = F, tidy = F}
+library(knitr)
+# make this an external chunk that can be included in any file
+options(width = 100)
+opts_chunk$set(message = F, error = F, warning = F, comment = NA, fig.align = 'center', dpi = 100, tidy = F, cache.path = '.cache/', fig.path = 'fig/')
+
+options(xtable.type = 'html')
+knit_hooks$set(inline = function(x) {
+  if(is.numeric(x)) {
+    round(x, getOption('digits'))
+  } else {
+    paste(as.character(x), collapse = ', ')
+  }
+})
+
+knit_hooks$set(plot = knitr:::hook_plot_html)
+```
+## NoSQL overview
+
+```{r xtable1, results="asis", echo = FALSE, fig.height=52, fig.width=7}
+databases = c("RDBMS","Memcached", "MapReduce", "CouchDB", "BigTable (HBase)", "MongoDB", "Dynamo","Pig","HIVE","Cassendra","Voldemort","Riak","Dremel","Megastore","Tenzing","Spark","Spanner","Accumulo","Impala")
+scale = c(FALSE,rep(TRUE,18))
+pri_index = c(TRUE, TRUE, FALSE, rep(TRUE,4), rep(FALSE,2),rep(TRUE,3),FALSE, TRUE, FALSE, FALSE, TRUE, TRUE, FALSE)
+sec_index = c(TRUE, FALSE, FALSE, rep(TRUE,3), rep(FALSE,3), TRUE, FALSE, TRUE, FALSE, TRUE, FALSE, FALSE, TRUE, TRUE, FALSE)
+transactions = c(TRUE, FALSE, FALSE, rep("record",3),rep(FALSE,3),rep("EC, record",3), FALSE, "entity group",rep(FALSE,2),TRUE, "record", FALSE)
+joins_analytics = c(TRUE, FALSE, TRUE, "MR", "MR", rep(FALSE,2), rep(TRUE,2), rep(FALSE,2), "MR", rep(FALSE,3),TRUE, "?","MR",TRUE )
+integr_constrain = c(TRUE, rep(FALSE,7), rep(TRUE,2),rep(FALSE,2),rep(TRUE,7))
+views = c(TRUE, rep(FALSE,2), TRUE, rep(FALSE,5), TRUE, rep(FALSE,4), TRUE, FALSE, TRUE, rep(FALSE,2))
+Language = c(TRUE, rep(FALSE,6),rep(TRUE,2),rep(FALSE,3),rep(TRUE,5),FALSE,TRUE)
+data_model = c("Tables", rep("key_val",2),"document","ext-records", "document","ext-records",rep("Tables",2),rep("key_val",3),rep("Tables",5),"ext-records","Tables")
+type_db = c("sql-like",rep("nosql",1),"batch", rep("nosql",4),rep("sql-like",2),rep("nosql",3), rep("sql-like",1),rep("nosql",1),rep("sql-like",3),rep("nosql",1),"sql-like")
+
+dat1 = data.frame(database = databases, scale = scale, pri_index = pri_index, sec_index = sec_index, transactions = transactions, joins_analytics = joins_analytics, integr_constrain = integr_constrain, views = views, Language = Language, data_model = data_model, type_db = type_db)
+
+library(googleVis)
+Table <- gvisTable(dat1,options=list(legend='none',
+                                         width = 1000,
+                                     height = 430,
+                                    fontSize=10, frozenColumns = 1))
+Table$html$header <- NULL
+Table$html$footer <- NULL
+Table$html$jsFooter <- NULL
+Table$html$caption <- NULL
+print(Table)
+```
+
+---
+
+## Relaxing consistency guarantee
+
+<img class="center" src= nosql1.png height=350>
+
+> 1. Ensure high availability
+> 2. Support updates
+
+---
+
+## Relaxing consistency guarantee
+
+DataBases: "Everyone MUST see the same thing, either old or new, no matter how long it takes."
+NoSQL: "For large applications, we can't afford to wait that long, and maybe it doesn't matter anyway."
+
+New design space: High scalability, high availability, eventual consistency.
+
+---
+
+
+## Eventual Consistency
+
+- Write conflicts will eventually propogate throughout the system.
+
+> - In absence of updates, all replicas converge towards identical copies.
+> - What the application sees in the meantime is sensitive to replication mechanisms.
+> - Contrast with RDBMS: Immediate consistency, but maybe deadlocks.
+
+---
+
+## CAP Theorem
+
+> - Consistency
+    - Do all applications see the same data?
+    
+> - Availability 
+    - Can I interact with the system in the presence of failures?
+
+> - Partitioning
+    - If two sections of your system cannot talk to each other, can they make forward progress on their own?
+    - If not, you sacrifice availability
+    - If so, you might have to sacrifice consistency
+
+> - Conventional databases assume no partitioning
+> - NoSQL systems may sacrfice consistency.
+
+---
+
+## CAP Triangle
+
+<img class="center" src= cap.png height=450>
+
+---
+
+## Features of NoSQL
+
+> 1. Ability to horzontally scale 
+> 2. The ability to replicate and partition data over multiple servers
+> 3. A simple call level interface (in contrast to SQL binding)
+> 4. Weaker concurrency model than ACID (Atomicity, Consistency, Isolation, Durability)
+> 5. Efficient used of distributed indexes and RAM
+> 6. Dynamically add new attributes 
+
+---
+
+
+## Horizontal Scalability VS Vertical Scalability
+
+### Horizontal Scalability
+
+Distribute both data and load of operations over many servers, with no RAM or disk shared.
+
+### Vertical Scalability
+
+A database system utilizes many cores and/or CPUs that share RAM and disks.
+
+---
+
+## Data Store categories
+
+> - <b>Key-value Stores:</b> Stores with values and index to find them, based on a programmer defined key.
+
+> - <b>Document stores:</b> Stores documents. The documents are indexed and a simple query mechanism is provided.
+
+> - <b>Wide column stores:</b> Store extensible records that can be partitioned vertically and horizontally across nodes. 
+
+> - <b>Relational Databases:</b> These systems store (and index and query) tuples. 
+
+---
+
+
+## Key-value stores
+
+### Project Voldemort
+
+- Written in Java, Open source, LinkedIn (most contributions).
+- Multi-version concurrency control (MVCC) for
+updates.
+- Replica updates are asynchronous.
+- No guarantee of consistent data
+- Guarantee of an up-to-date view if you read a majority of
+replicas.
+- Optimistic locking for consisten multi-record updates
+  - In case of conflict with other process, back out.
+- Automatic sharding of data.
+- Consistent hashing for distribution
+  - data hashed to node K is replicated on node K+1...K+n where n is number of extra copies.
+- Nodes can be added or removed from cluster; system adopts automatically.
+- Voldemort automatically detects and recovers failed nodes.
+
+
+---
+
+### Riak
+
+- More functionality than typical key-value store.
+- Riak objects can be fetched and stored in JSON
+format and thus can have multiple fields (like
+documents)
+- Only support indices on the primary key. 
+- Limits the non-primary fields to storage and fetching as
+part of a JSON object. 
+- Riak lacks the query mechanisms of the document stores; the only
+lookup you can do is on primary key.
+- Replication of objects and sharding by
+hashing on the primary key. 
+- Replica values to be temporarily inconsistent. 
+- Tunable consistency by specifying how many replicas
+must respond for a successful read.
+- Same tuning for successful write.
+- Different parts of an application can choose different trade-offs
+- Uses consistent hashing. 
+- No distinguished node to track status of the system.
+- Gossip protocol to track alive nodes and know what data they have- Any node may service a client request. 
+- Also includes a map/reduce mechanism to split work over all the nodes in a cluster.
+
+---
+
+### Redis
+
+- The client side does the distributed hashing over servers.
+- The servers store data in RAM, but data can be copied to disk for
+backup or system shutdown.
+- System shutdown needed to add more nodes.
+- Like Voldemort, it allows lists and sets to be associated with a key.
+- Redis does atomic updates by locking.
+- Replication is asynchronous.
+
+---
+
+### Scalaris
+- Allows key ranges to be assigned to nodes, rather than simply
+hashing to nodes. 
+    - A query on a range of values does not need to go to every node.
+    - Better load balancing depending on key distributions.
+
+- Replication is synchronous. (copies must be updated before the operation is
+complete)
+    - Data is guaranteed to be consistent.
+- Supports transactions with ACID properties on multiple objects.
+- Data is stored in memory, but replication and recovery from node
+failures provides durability of the updates.
+- Scalaris reads and writes must go to a majority of the replicas before an operation completes. 
+
+---
+
+## Summary of key-value store
+
+```{r xtable, results="asis", echo = FALSE}
+databases = c("Voldemort", "Riak", "Redis", "Scalaris", "Tokyo Cabinet","Memcached")
+basic_operations = c(rep(TRUE,6))
+store_data = c(c("RAM/Disk",5),"Both ram and disk")
+Transactions = c(FALSE,FALSE,FALSE, TRUE, TRUE, FALSE)
+Replication = c(rep("Asynchronous",3), "Synchronous", "Asynchronous", "Synchronous")
+Concurrency = c(rep("MVCC",2), rep("locks",4))
+
+Scalability = c(rep(TRUE,6))
+dat = data.frame(database = databases, basic_operations = basic_operations, store_data = store_data, Transactions = Transactions, Replication = Replication, Concurrency = Concurrency, Scalability = Scalability)
+
+
+library(xtable)
+tab <- xtable(dat) 
+print(tab, type="html")
+```
+
+---
+
+
+## Document stores
+
+### SimpleDB
+
+### CouchDB
+
+### MongoDB
+
+### Terrastore
+
+### 
+

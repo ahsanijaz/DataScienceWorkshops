@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MapReduce and NoSQL</title>
+  <meta charset="utf-8">
+  <meta name="description" content="MapReduce and NoSQL">
+  <meta name="author" content="Ahsan Ijaz">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>MapReduce and NoSQL</h1>
+    <h2></h2>
+    <p>Ahsan Ijaz<br/>Ebryx</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>NoSQL overview</h2>
+  </hgroup>
+  <article data-timings="">
+    <!-- Table generated in R 3.3.1 by googleVis 0.6.1 package -->
+
+<!-- Sun Jan 15 21:32:00 2017 -->
+
+<!-- jsHeader -->
+
+<script type="text/javascript">
+ 
+// jsData 
+function gvisDataTableID1f4d2a9ef91b () {
+var data = new google.visualization.DataTable();
+var datajson =
+[
+ [
+"RDBMS",
+false,
+true,
+true,
+"TRUE",
+"TRUE",
+true,
+true,
+true,
+"Tables",
+"sql-like"
+],
+[
+"Memcached",
+true,
+true,
+false,
+"FALSE",
+"FALSE",
+false,
+false,
+false,
+"key_val",
+"nosql"
+],
+[
+"MapReduce",
+true,
+false,
+false,
+"FALSE",
+"TRUE",
+false,
+false,
+false,
+"key_val",
+"batch"
+],
+[
+"CouchDB",
+true,
+true,
+true,
+"record",
+"MR",
+false,
+true,
+false,
+"document",
+"nosql"
+],
+[
+"BigTable (HBase)",
+true,
+true,
+true,
+"record",
+"MR",
+false,
+false,
+false,
+"ext-records",
+"nosql"
+],
+[
+"MongoDB",
+true,
+true,
+true,
+"record",
+"FALSE",
+false,
+false,
+false,
+"document",
+"nosql"
+],
+[
+"Dynamo",
+true,
+true,
+false,
+"FALSE",
+"FALSE",
+false,
+false,
+false,
+"ext-records",
+"nosql"
+],
+[
+"Pig",
+true,
+false,
+false,
+"FALSE",
+"TRUE",
+false,
+false,
+true,
+"Tables",
+"sql-like"
+],
+[
+"HIVE",
+true,
+false,
+false,
+"FALSE",
+"TRUE",
+true,
+false,
+true,
+"Tables",
+"sql-like"
+],
+[
+"Cassendra",
+true,
+true,
+true,
+"EC, record",
+"FALSE",
+true,
+true,
+false,
+"key_val",
+"nosql"
+],
+[
+"Voldemort",
+true,
+true,
+false,
+"EC, record",
+"FALSE",
+false,
+false,
+false,
+"key_val",
+"nosql"
+],
+[
+"Riak",
+true,
+true,
+true,
+"EC, record",
+"MR",
+false,
+false,
+false,
+"key_val",
+"nosql"
+],
+[
+"Dremel",
+true,
+false,
+false,
+"FALSE",
+"FALSE",
+true,
+false,
+true,
+"Tables",
+"sql-like"
+],
+[
+"Megastore",
+true,
+true,
+true,
+"entity group",
+"FALSE",
+true,
+false,
+true,
+"Tables",
+"nosql"
+],
+[
+"Tenzing",
+true,
+false,
+false,
+"FALSE",
+"FALSE",
+true,
+true,
+true,
+"Tables",
+"sql-like"
+],
+[
+"Spark",
+true,
+false,
+false,
+"FALSE",
+"TRUE",
+true,
+false,
+true,
+"Tables",
+"sql-like"
+],
+[
+"Spanner",
+true,
+true,
+true,
+"TRUE",
+"?",
+true,
+true,
+true,
+"Tables",
+"sql-like"
+],
+[
+"Accumulo",
+true,
+true,
+true,
+"record",
+"MR",
+true,
+false,
+false,
+"ext-records",
+"nosql"
+],
+[
+"Impala",
+true,
+false,
+false,
+"FALSE",
+"TRUE",
+true,
+false,
+true,
+"Tables",
+"sql-like"
+] 
+];
+data.addColumn('string','database');
+data.addColumn('boolean','scale');
+data.addColumn('boolean','pri_index');
+data.addColumn('boolean','sec_index');
+data.addColumn('string','transactions');
+data.addColumn('string','joins_analytics');
+data.addColumn('boolean','integr_constrain');
+data.addColumn('boolean','views');
+data.addColumn('boolean','Language');
+data.addColumn('string','data_model');
+data.addColumn('string','type_db');
+data.addRows(datajson);
+return(data);
+}
+ 
+// jsDrawChart
+function drawChartTableID1f4d2a9ef91b() {
+var data = gvisDataTableID1f4d2a9ef91b();
+var options = {};
+options["allowHtml"] = true;
+options["legend"] = "none";
+options["width"] = 1000;
+options["height"] = 430;
+options["fontSize"] = 10;
+options["frozenColumns"] = 1;
+
+    var chart = new google.visualization.Table(
+    document.getElementById('TableID1f4d2a9ef91b')
+    );
+    chart.draw(data,options);
+    
+
+}
+  
+ 
+// jsDisplayChart
+(function() {
+var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+var chartid = "table";
+  
+// Manually see if chartid is in pkgs (not all browsers support Array.indexOf)
+var i, newPackage = true;
+for (i = 0; newPackage && i < pkgs.length; i++) {
+if (pkgs[i] === chartid)
+newPackage = false;
+}
+if (newPackage)
+  pkgs.push(chartid);
+  
+// Add the drawChart function to the global list of callbacks
+callbacks.push(drawChartTableID1f4d2a9ef91b);
+})();
+function displayChartTableID1f4d2a9ef91b() {
+  var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+  var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+  window.clearTimeout(window.__gvisLoad);
+  // The timeout is set to 100 because otherwise the container div we are
+  // targeting might not be part of the document yet
+  window.__gvisLoad = setTimeout(function() {
+  var pkgCount = pkgs.length;
+  google.load("visualization", "1", { packages:pkgs, callback: function() {
+  if (pkgCount != pkgs.length) {
+  // Race condition where another setTimeout call snuck in after us; if
+  // that call added a package, we must not shift its callback
+  return;
+}
+while (callbacks.length > 0)
+callbacks.shift()();
+} });
+}, 100);
+}
+ 
+// jsFooter
+</script>
+ 
+
+<!-- jsChart -->  
+
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartTableID1f4d2a9ef91b"></script>
+ 
+
+<!-- divChart -->
+
+<div id="TableID1f4d2a9ef91b" 
+  style="width: 1000; height: 430;">
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Relaxing consistency guarantee</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= nosql1.png height=350></p>
+
+<ol class = "build incremental">
+<li>Ensure high availability</li>
+<li>Support updates</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Relaxing consistency guarantee</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>DataBases: &quot;Everyone MUST see the same thing, either old or new, no matter how long it takes.&quot;
+NoSQL: &quot;For large applications, we can&#39;t afford to wait that long, and maybe it doesn&#39;t matter anyway.&quot;</p>
+
+<p>New design space: High scalability, high availability, eventual consistency.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Eventual Consistency</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Write conflicts will eventually propogate throughout the system.</li>
+</ul>
+
+<ul class = "build incremental">
+<li>In absence of updates, all replicas converge towards identical copies.</li>
+<li>What the application sees in the meantime is sensitive to replication mechanisms.</li>
+<li>Contrast with RDBMS: Immediate consistency, but maybe deadlocks.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>CAP Theorem</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul class = "build incremental">
+<li><p>Consistency</p>
+
+<ul>
+<li>Do all applications see the same data?</li>
+</ul></li>
+<li><p>Availability </p>
+
+<ul>
+<li>Can I interact with the system in the presence of failures?</li>
+</ul></li>
+<li><p>Partitioning</p>
+
+<ul>
+<li>If two sections of your system cannot talk to each other, can they make forward progress on their own?</li>
+<li>If not, you sacrifice availability</li>
+<li>If so, you might have to sacrifice consistency</li>
+</ul></li>
+<li><p>Conventional databases assume no partitioning</p></li>
+<li><p>NoSQL systems may sacrfice consistency.</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>CAP Triangle</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= cap.png height=450></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Features of NoSQL</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol class = "build incremental">
+<li>Ability to horzontally scale </li>
+<li>The ability to replicate and partition data over multiple servers</li>
+<li>A simple call level interface (in contrast to SQL binding)</li>
+<li>Weaker concurrency model than ACID (Atomicity, Consistency, Isolation, Durability)</li>
+<li>Efficient used of distributed indexes and RAM</li>
+<li>Dynamically add new attributes </li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Horizontal Scalability VS Vertical Scalability</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Horizontal Scalability</h3>
+
+<p>Distribute both data and load of operations over many servers, with no RAM or disk shared.</p>
+
+<h3>Vertical Scalability</h3>
+
+<p>A database system utilizes many cores and/or CPUs that share RAM and disks.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Data Store categories</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul class = "build incremental">
+<li><p><b>Key-value Stores:</b> Stores with values and index to find them, based on a programmer defined key.</p></li>
+<li><p><b>Document stores:</b> Stores documents. The documents are indexed and a simple query mechanism is provided.</p></li>
+<li><p><b>Wide column stores:</b> Store extensible records that can be partitioned vertically and horizontally across nodes. </p></li>
+<li><p><b>Relational Databases:</b> These systems store (and index and query) tuples. </p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Key-value stores</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Project Voldemort</h3>
+
+<ul>
+<li>Written in Java, Open source, LinkedIn (most contributions).</li>
+<li>Multi-version concurrency control (MVCC) for
+updates.</li>
+<li>Replica updates are asynchronous.</li>
+<li>No guarantee of consistent data</li>
+<li>Guarantee of an up-to-date view if you read a majority of
+replicas.</li>
+<li>Optimistic locking for consisten multi-record updates
+
+<ul>
+<li>In case of conflict with other process, back out.</li>
+</ul></li>
+<li>Automatic sharding of data.</li>
+<li>Consistent hashing for distribution
+
+<ul>
+<li>data hashed to node K is replicated on node K+1...K+n where n is number of extra copies.</li>
+</ul></li>
+<li>Nodes can be added or removed from cluster; system adopts automatically.</li>
+<li>Voldemort automatically detects and recovers failed nodes.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h3>Riak</h3>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>More functionality than typical key-value store.</li>
+<li>Riak objects can be fetched and stored in JSON
+format and thus can have multiple fields (like
+documents)</li>
+<li>Only support indices on the primary key. </li>
+<li>Limits the non-primary fields to storage and fetching as
+part of a JSON object. </li>
+<li>Riak lacks the query mechanisms of the document stores; the only
+lookup you can do is on primary key.</li>
+<li>Replication of objects and sharding by
+hashing on the primary key. </li>
+<li>Replica values to be temporarily inconsistent. </li>
+<li>Tunable consistency by specifying how many replicas
+must respond for a successful read.</li>
+<li>Same tuning for successful write.</li>
+<li>Different parts of an application can choose different trade-offs</li>
+<li>Uses consistent hashing. </li>
+<li>No distinguished node to track status of the system.</li>
+<li>Gossip protocol to track alive nodes and know what data they have- Any node may service a client request. </li>
+<li>Also includes a map/reduce mechanism to split work over all the nodes in a cluster.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h3>Redis</h3>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>The client side does the distributed hashing over servers.</li>
+<li>The servers store data in RAM, but data can be copied to disk for
+backup or system shutdown.</li>
+<li>System shutdown needed to add more nodes.</li>
+<li>Like Voldemort, it allows lists and sets to be associated with a key.</li>
+<li>Redis does atomic updates by locking.</li>
+<li>Replication is asynchronous.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h3>Scalaris</h3>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Allows key ranges to be assigned to nodes, rather than simply
+hashing to nodes. </p>
+
+<ul>
+<li>A query on a range of values does not need to go to every node.</li>
+<li>Better load balancing depending on key distributions.</li>
+</ul></li>
+<li><p>Replication is synchronous. (copies must be updated before the operation is
+complete)</p>
+
+<ul>
+<li>Data is guaranteed to be consistent.</li>
+</ul></li>
+<li><p>Supports transactions with ACID properties on multiple objects.</p></li>
+<li><p>Data is stored in memory, but replication and recovery from node
+failures provides durability of the updates.</p></li>
+<li><p>Scalaris reads and writes must go to a majority of the replicas before an operation completes. </p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>Summary of key-value store</h2>
+  </hgroup>
+  <article data-timings="">
+    <!-- html table generated in R 3.3.1 by xtable 1.8-2 package -->
+
+<!-- Sun Jan 15 21:32:00 2017 -->
+
+<table border=1>
+<tr> <th>  </th> <th> database </th> <th> basic_operations </th> <th> store_data </th> <th> Transactions </th> <th> Replication </th> <th> Concurrency </th> <th> Scalability </th>  </tr>
+  <tr> <td align="right"> 1 </td> <td> Voldemort </td> <td> TRUE </td> <td> RAM/Disk </td> <td> FALSE </td> <td> Asynchronous </td> <td> MVCC </td> <td> TRUE </td> </tr>
+  <tr> <td align="right"> 2 </td> <td> Riak </td> <td> TRUE </td> <td> 5 </td> <td> FALSE </td> <td> Asynchronous </td> <td> MVCC </td> <td> TRUE </td> </tr>
+  <tr> <td align="right"> 3 </td> <td> Redis </td> <td> TRUE </td> <td> Both ram and disk </td> <td> FALSE </td> <td> Asynchronous </td> <td> locks </td> <td> TRUE </td> </tr>
+  <tr> <td align="right"> 4 </td> <td> Scalaris </td> <td> TRUE </td> <td> RAM/Disk </td> <td> TRUE </td> <td> Synchronous </td> <td> locks </td> <td> TRUE </td> </tr>
+  <tr> <td align="right"> 5 </td> <td> Tokyo Cabinet </td> <td> TRUE </td> <td> 5 </td> <td> TRUE </td> <td> Asynchronous </td> <td> locks </td> <td> TRUE </td> </tr>
+  <tr> <td align="right"> 6 </td> <td> Memcached </td> <td> TRUE </td> <td> Both ram and disk </td> <td> FALSE </td> <td> Synchronous </td> <td> locks </td> <td> TRUE </td> </tr>
+   </table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>Document stores</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>SimpleDB</h3>
+
+<h3>CouchDB</h3>
+
+<h3>MongoDB</h3>
+
+<h3>Terrastore</h3>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NoSQL overview'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Relaxing consistency guarantee'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Relaxing consistency guarantee'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Eventual Consistency'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='CAP Theorem'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='CAP Triangle'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Features of NoSQL'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Horizontal Scalability VS Vertical Scalability'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Data Store categories'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Key-value stores'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Riak'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Redis'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Scalaris'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Summary of key-value store'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='Document stores'>
+         15
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

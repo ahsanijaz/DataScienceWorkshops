@@ -30,9 +30,9 @@ embed : TRUE
 
 Tools | Abstraction
 ---------|----------
-Hadoop    | MapReduce
-PostgreSQL   | Relational Algebra
-glm in R|Logistic regression
+Hadoop | MapReduce
+PostgreSQL | Relational Algebra
+glm in R | Logistic regression
 Tableau| InfoVis
 
 ---
@@ -41,8 +41,8 @@ Tableau| InfoVis
 
 Structures | Statistics
 ---------|----------
-Management     | Linear Algebra
-Relational Algebra   | Analysis
+Management | Linear Algebra
+Relational Algebra | Analysis
 Standards | Ad hoc files
 
 ---
