@@ -1,5 +1,5 @@
 ---
-title       : MapReduce and NoSQL
+title       : NoSQL 
 subtitle    : 
 author      : Ahsan Ijaz
 job         : Ebryx
@@ -417,6 +417,13 @@ New design space: High scalability, high availability, eventual consistency.
 <img class="center" src= cap.png height=450>
 
 ---
+
+## NoSQL summary
+
+<img class="center" src= cap2.png height=500>
+
+---
+
 
 ## Features of NoSQL
 

@@ -116,6 +116,13 @@ New design space: High scalability, high availability, eventual consistency.
 
 ---
 
+## NoSQL summary
+
+<img class="center" src= cap2.png height=500>
+
+---
+
+
 ## Features of NoSQL
 
 > 1. Ability to horzontally scale 

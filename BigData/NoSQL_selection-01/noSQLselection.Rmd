@@ -112,7 +112,7 @@ UNION ALL
 ```{r, eval = FALSE}
 SELECT *
     FROM Orders o, Lines i
-WHERE o.order = i.order
+WHERE o.item = i.item
 AND o.date = today()
 ```
 
@@ -202,5 +202,5 @@ AND o.date = today()
 
 <img class="center" src= aggregate.png height=450>
 
----
+
 
