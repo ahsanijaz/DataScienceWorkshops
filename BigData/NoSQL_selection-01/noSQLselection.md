@@ -57,6 +57,12 @@ embed : TRUE
 
 ---
 
+## Design space for Big data
+
+<img class="center" src= dspace.png height=450>
+
+---
+
 
 ## Parallel query processing
 
@@ -174,9 +180,16 @@ AND o.date = today()
 
 ## Grep task loading results
 
+<img class="center" src= saveHadoop.png height=450>
+
+---
+
+## Grep Task
+
 <img class="center" src= grepExec.png height=450>
 
 ---
+
 
 ## Selection and filter task
 

@@ -173,4 +173,4 @@ Histogram of words in each document.
 
 <img class="center" src= mr2.png height=400>
 
----
+
