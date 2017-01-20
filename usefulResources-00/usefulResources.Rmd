@@ -71,3 +71,16 @@ knitr::opts_chunk$set(echo = TRUE)
 * Hans Rosling, [The Joy of Stats](https://www.gapminder.org/videos/the-joy-of-stats/) 
 * Pat Hanaran, [Tools for Data Enthusiasts](https://vimeo.com/50723101)
 * Jeffrey Heer, Michael Bostock, Vadim Ogievetsky, [A Tour through the Visualization Zoo](http://queue.acm.org/detail.cfm?id=1805128), Communications of the ACM, Volume 53 Issue 6, June 2010
+
+
+## Interesting Data blogs
+
+* [Simply Statistics](http://simplystatistics.org/)
+* [OpenAI blog](https://openai.com/blog/)
+* [Kaggle blog](http://blog.kaggle.com/)
+* [Machine learning blog](http://hunch.net/)
+* [kdnuggets](http://www.kdnuggets.com/)
+* [Dataists](http://www.dataists.com/)
+* [A comprehensive list of Data blogs](http://www.cs.waikato.ac.nz/~bernhard/good-machine-learning-blogs.html)
+
+; ## Recommended Online courses
