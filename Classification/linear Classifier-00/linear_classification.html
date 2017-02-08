@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Linear Classifiers</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Linear Classifiers">
+  <meta name="author" content="Ahsan Ijaz">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Linear Classifiers</h1>
+    <h2></h2>
+    <p>Ahsan Ijaz<br/>Ebryx</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Classification Examples</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul class = "build incremental">
+<li>Given the symptoms, identify the medical condtions of the patient.</li>
+<li>Online transaction fraud using IP address, past transaction history etc.</li>
+<li>Detection of DNA mutations as deleterious using data of DNA sequences with and without disease.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h3>Webpage categorization</h3>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= webInput.png  height=450></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h3>Spam detection</h3>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= spam.png  height=450></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h3>Reading mind</h3>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= mindRead.png  height=450></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h3>Personalized healthcare</h3>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= health.png  height=450></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Default of Payment example</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Giving the income and balance, will the person default on payment?
+<img class="center" src= default.png  height=450></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Default of Payment example</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Giving the income and balance, will the person default on payment?
+<img class="center" src= boxWhisk.png  height=450></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Linear Classification</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Separation of blue and red data points
+
+<ul>
+<li>Feature selection task same as in regression</li>
+</ul></li>
+<li>Two features used in the graph below</li>
+</ul>
+
+<div class="rimage center"><img src="fig/unnamed-chunk-1-1.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" class="plot" /></div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Sentiment Analysis Example</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= sentimentAn.png  height=450></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Linear Classifier</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Using training data to learn weights for each word.</p>
+
+<table><thead>
+<tr>
+<th>Words</th>
+<th>Coefficients</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Good</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>great</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Exceptional</td>
+<td>1.5</td>
+</tr>
+<tr>
+<td>Awesome</td>
+<td>2.3</td>
+</tr>
+<tr>
+<td>bad</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>terrible</td>
+<td>-1.5</td>
+</tr>
+<tr>
+<td>hideous</td>
+<td>-2.5</td>
+</tr>
+<tr>
+<td>awful</td>
+<td>-3</td>
+</tr>
+<tr>
+<td>we,are,the,where,how,restaurant</td>
+<td>0</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Linear Classifier</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul class = "build incremental">
+<li>Input sentence </li>
+<li>Replace words with coefficients (x)</li>
+<li>Calculate Score(x) as weighted count of words in sentence</li>
+<li>If Score(x) &gt; 0, declare positive sentence, else declare negative sentence</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Decision Boundaries</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>For linear classifier:</p>
+
+<ul>
+<li>When 2 co-efficients are non-zero:
+
+<ul>
+<li>A line</li>
+</ul></li>
+<li>When 3 co-efficients are non-zero:
+
+<ul>
+<li>A plane</li>
+</ul></li>
+<li>When many co-efficients are non-zero:
+
+<ul>
+<li>A hyperplane</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>Simple example of linear classifier</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= classLin.png  height=450></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>Simple hyperplane</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Model: \(\hat{y}_i = sign(\color{blue}{Score(x_i)})\)</li>
+<li>\(\color{blue}{Score(x_i)} = w_0 + w_1x_i[1] +  + w_dx_i[d] = w^T\mathbf{x}\)</li>
+<li>feature 1 = 1</li>
+<li>feature 2 = #awesome</li>
+<li>feature 3 = #awful</li>
+<li>feature d = #for</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <article data-timings="">
+    <p><img class="center" src= classLinTot.png  height=450></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>Probability of each class (confidence of each prediction)</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>The food was ok but the service was good. (+1 with prob 0.5)</li>
+<li>The food and service both were amazing. (+1 with prob 0.9)</li>
+<li>The food was awful, so was the service. (-1 with prob 0.9)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>Generalized linear models</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= generLM.png  height=450></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>Logistic Regression</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>sigmoid(Score) = \(\frac{1}{1+e^{(-w^T(h(x))}}\) </li>
+</ul>
+
+<p><img class="center" src= logit.png  height=400></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>Multiclass Training 1 versus all</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>$\hat{P}(y=+1|x) = $ estimate of 1 vs all model for each class</p></li>
+<li><p>max_prob = 0; \(\hat{y} = 0\)</p></li>
+<li><p>For c = 1,...C:</p>
+
+<ul>
+<li>if \(\hat{P}_c(y=+1|x)\) &gt; max_prob:
+
+<ul>
+<li>\(\hat{y}\) = c</li>
+<li>max_prob = \(\hat{P}_c(y=+1|x)\)</li>
+</ul></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>Logistic regression parameter estimation</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= likelihood.png  height=200></p>
+
+<ul>
+<li>Maximize likelihood function over all possible w_0,w_1,W_2 values</li>
+</ul>
+
+<p>\[ l(w_0,w_1,w_2) = P(y_i|x_i,\mathbf{w}) \]</p>
+
+<ul>
+<li>No closed form solution</li>
+<li>Gradient ascent algortihm to find solution</li>
+<li>While not converged:
+\[ w^{t+1} = w^t + \zeta\times{}\frac{dl}{dw}\]</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:;">
+  <hgroup>
+    <h2>Learning rate</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= learningRate.png  height=200></p>
+
+<ul>
+<li>Try several values (exponentially spaced)
+
+<ul>
+<li>find one \(\zeta\) that is too small</li>
+<li>another that is too large</li>
+</ul></li>
+<li>Iterate between the two values.</li>
+<li>Step size that decreases with iterations \(\zeta_t = \frac{\zeta_0}{t}\)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-22" style="background:;">
+  <hgroup>
+    <h2>Loan risk assessment</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= loanrisk.png  height=400></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-23" style="background:;">
+  <hgroup>
+    <h2>Intelligent loan application</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= intelligentLoan.png  height=350></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-24" style="background:;">
+  <hgroup>
+    <h2>Decision tree</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= dt.png  height=400></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-25" style="background:;">
+  <hgroup>
+    <h2>Quality metric: Classification</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Error measures fraction of mistakes</li>
+</ul>
+
+<p>\[ \color{blue}{\textit{Error} = \frac{\textit{#incorrect predictions}}{\textit{# examples}}} \]</p>
+
+<ul>
+<li>Best possible value: 0.0</li>
+<li>Worst possible value: 1.0</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Classification Examples'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Webpage categorization'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Spam detection'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Reading mind'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Personalized healthcare'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Default of Payment example'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Default of Payment example'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Linear Classification'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Sentiment Analysis Example'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Linear Classifier'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Linear Classifier'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Decision Boundaries'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Simple example of linear classifier'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Simple hyperplane'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='NA'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='Probability of each class (confidence of each prediction)'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='Generalized linear models'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='Logistic Regression'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='Multiclass Training 1 versus all'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='Logistic regression parameter estimation'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='Learning rate'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='Loan risk assessment'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='Intelligent loan application'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='Decision tree'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='Quality metric: Classification'>
+         25
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

@@ -9,7 +9,7 @@ plot(x,x)
 
 parabola = data.frame(input = x, parabola = 50 - (x-10)^2)
 
-dat = melt(parabola,id.vars = 'input', variable.name = c('output'),value.name = 'value')
+dat = melt(parabola, id.vars = 'input', variable.name = c('output'),value.name = 'value')
 ggplot(data = dat, aes(x=input, y=value, group = output,color = output)) +
   geom_line()
 
