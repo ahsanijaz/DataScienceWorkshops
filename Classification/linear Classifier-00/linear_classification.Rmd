@@ -222,7 +222,7 @@ For linear classifier:
 <img class="center" src= likelihood.png  height=200>
 - Maximize likelihood function over all possible w_0,w_1,W_2 values
 
-$$ l(w_0,w_1,w_2) = P(y_i|x_i,\mathbf{w}) $$
+$$ l(w_0,w_1,w_2) = \prod_{i = 1}^{n}P(y_i|x_i,\mathbf{w}) $$
 
 - No closed form solution
 - Gradient ascent algortihm to find solution
@@ -238,40 +238,6 @@ $$ w^{t+1} = w^t + \zeta\times{}\frac{dl}{dw}$$
   - another that is too large
 - Iterate between the two values.
 - Step size that decreases with iterations $\zeta_t = \frac{\zeta_0}{t}$
-
-
----
-
-## Loan risk assessment 
-
-<img class="center" src= loanrisk.png  height=400>
-
----
-
-## Intelligent loan application
-
-<img class="center" src= intelligentLoan.png  height=350>
-
----
-
-## Decision tree
-
-<img class="center" src= dt.png  height=400>
-
----
-
-## Quality metric: Classification
-
-- Error measures fraction of mistakes
-
-$$ \color{blue}{\textit{Error} = \frac{\textit{#incorrect predictions}}{\textit{# examples}}} $$
-
-- Best possible value: 0.0
-- Worst possible value: 1.0
-
----
-
-## Greedy decision tree algorithm
 
 
 ---

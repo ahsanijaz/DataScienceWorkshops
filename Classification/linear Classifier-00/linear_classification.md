@@ -185,7 +185,7 @@ For linear classifier:
 <img class="center" src= likelihood.png  height=200>
 - Maximize likelihood function over all possible w_0,w_1,W_2 values
 
-$$ l(w_0,w_1,w_2) = P(y_i|x_i,\mathbf{w}) $$
+$$ l(w_0,w_1,w_2) = \prod_{i = 1}^{n}P(y_i|x_i,\mathbf{w}) $$
 
 - No closed form solution
 - Gradient ascent algortihm to find solution
@@ -231,3 +231,15 @@ $$ \color{blue}{\textit{Error} = \frac{\textit{#incorrect predictions}}{\textit{
 
 - Best possible value: 0.0
 - Worst possible value: 1.0
+
+---
+
+## Greedy decision tree algorithm
+
+> - Step 1: Start with an empty tree
+> - Step 2: Select a feature to split data
+> - For each split of the tree:
+  - Step 3: If nothing more to, make predictions
+  - Step 4: Otherwise, go to Step 2 and continue on this split
+
+---
