@@ -222,7 +222,7 @@ For linear classifier:
 <img class="center" src= likelihood.png  height=200>
 - Maximize likelihood function over all possible w_0,w_1,W_2 values
 
-$$ l(w_0,w_1,w_2) = \prod_{i = 1}^{n}P(y_i|x_i,\mathbf{w}) $$
+$$ l(w_0,w_1,w_2) = \prod_{i = 0}^{n}P(y_i|x_i,\mathbf{w}) $$
 
 - No closed form solution
 - Gradient ascent algortihm to find solution
@@ -232,6 +232,7 @@ $$ w^{t+1} = w^t + \zeta\times{}\frac{dl}{dw}$$
 ---
 
 ## Learning rate
+
 <img class="center" src= learningRate.png  height=200>
 - Try several values (exponentially spaced)
   - find one $\zeta$ that is too small

@@ -65,12 +65,16 @@ knitr::opts_chunk$set(echo = TRUE)
 * Xindong Wu et al., [Top 10 Algorithms in Data Mining](http://www.cs.uvm.edu/~icdm/algorithms/index.shtml), Knowledge and Information Systems, 14(2008), 1: 1-37. 
 * Ullman, Rajaraman, [Mining of Massive Datasets , Chapter 1](http://infolab.stanford.edu/~ullman/mmds/book.pdf)
 * Pedro Domingos, [A Few Useful Things to Know about Machine Learning](http://homes.cs.washington.edu/~pedrod/papers/cacm12.pdf), CACM 55(10), 2012
+* [Machine Learning Yearning](http://www.mlyearning.org)
+
+* [The Art of Data Science](https://leanpub.com/artofdatascience)
 
 ### Visualization and communicating results
 
 * Hans Rosling, [The Joy of Stats](https://www.gapminder.org/videos/the-joy-of-stats/) 
 * Pat Hanaran, [Tools for Data Enthusiasts](https://vimeo.com/50723101)
 * Jeffrey Heer, Michael Bostock, Vadim Ogievetsky, [A Tour through the Visualization Zoo](http://queue.acm.org/detail.cfm?id=1805128), Communications of the ACM, Volume 53 Issue 6, June 2010
+* [Graphics Lies, Misleading Visuals-Alberto Cairo](http://infovis.fh-potsdam.de/readings/Cairo2015.pdf)
 
 
 ## Interesting Data blogs
@@ -83,4 +87,11 @@ knitr::opts_chunk$set(echo = TRUE)
 * [Dataists](http://www.dataists.com/)
 * [A comprehensive list of Data blogs](http://www.cs.waikato.ac.nz/~bernhard/good-machine-learning-blogs.html)
 
-; ## Recommended Online courses
+## Recommended Online courses
+
+* [Data Science specialization](https://www.coursera.org/specializations/jhu-data-science)
+* [Machine learning specialization](https://www.coursera.org/specializations/machine-learning)
+* [Executive Data science specialization](https://www.coursera.org/specializations/executive-data-science)
+* [Probablistic graphical methods](https://www.coursera.org/specializations/probabilistic-graphical-models)
+* [Data science at scale](https://www.coursera.org/specializations/data-science)
+

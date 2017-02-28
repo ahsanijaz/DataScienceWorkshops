@@ -185,7 +185,7 @@ For linear classifier:
 <img class="center" src= likelihood.png  height=200>
 - Maximize likelihood function over all possible w_0,w_1,W_2 values
 
-$$ l(w_0,w_1,w_2) = \prod_{i = 1}^{n}P(y_i|x_i,\mathbf{w}) $$
+$$ l(w_0,w_1,w_2) = \prod_{i = 0}^{n}P(y_i|x_i,\mathbf{w}) $$
 
 - No closed form solution
 - Gradient ascent algortihm to find solution
@@ -195,6 +195,7 @@ $$ w^{t+1} = w^t + \zeta\times{}\frac{dl}{dw}$$
 ---
 
 ## Learning rate
+
 <img class="center" src= learningRate.png  height=200>
 - Try several values (exponentially spaced)
   - find one $\zeta$ that is too small
@@ -202,44 +203,5 @@ $$ w^{t+1} = w^t + \zeta\times{}\frac{dl}{dw}$$
 - Iterate between the two values.
 - Step size that decreases with iterations $\zeta_t = \frac{\zeta_0}{t}$
 
-
----
-
-## Loan risk assessment 
-
-<img class="center" src= loanrisk.png  height=400>
-
----
-
-## Intelligent loan application
-
-<img class="center" src= intelligentLoan.png  height=350>
-
----
-
-## Decision tree
-
-<img class="center" src= dt.png  height=400>
-
----
-
-## Quality metric: Classification
-
-- Error measures fraction of mistakes
-
-$$ \color{blue}{\textit{Error} = \frac{\textit{#incorrect predictions}}{\textit{# examples}}} $$
-
-- Best possible value: 0.0
-- Worst possible value: 1.0
-
----
-
-## Greedy decision tree algorithm
-
-> - Step 1: Start with an empty tree
-> - Step 2: Select a feature to split data
-> - For each split of the tree:
-  - Step 3: If nothing more to, make predictions
-  - Step 4: Otherwise, go to Step 2 and continue on this split
 
 ---
