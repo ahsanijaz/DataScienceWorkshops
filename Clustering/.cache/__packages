@@ -1,0 +1,12 @@
+base
+knitr
+slidify
+shiny
+corrplot
+dplyr
+reshape2
+zoo
+xts
+h2o
+googleVis
+ggplot2

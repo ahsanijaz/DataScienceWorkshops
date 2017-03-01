@@ -146,6 +146,19 @@ $$ \textit{Inverse doc frequency} = \log\frac{\textit{#docs}}{1 + \textit{#docs 
 
 ---
 
+## IDF function
+
+```{r, echo=FALSE,fig.align='center',fig.width=5,fig.height=3.5}
+library(ggplot2)
+docs = 100
+nOWordsPerDoc = seq(1,docs)
+idfdf = data.frame(nOWordsPerDoc = nOWordsPerDoc, idf = log10(docs/(1+nOWordsPerDoc)))
+ggplot( data = idfdf, aes(x = nOWordsPerDoc, y = idf)) + geom_line(size = 2) + xlab('Number of words in documents') + ylab('idf')
+
+```
+
+---
+
 
 ## Distance metrics
 

@@ -130,6 +130,12 @@ $$ \textit{Inverse doc frequency} = \log\frac{\textit{#docs}}{1 + \textit{#docs 
 
 ---
 
+## IDF function
+
+<div class="rimage center"><img src="fig/unnamed-chunk-1-1.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" class="plot" /></div>
+
+---
+
 
 ## Distance metrics
 
