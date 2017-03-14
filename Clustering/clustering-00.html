@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Information retrieval</title>
+  <title>Clustering techniques</title>
   <meta charset="utf-8">
-  <meta name="description" content="Information retrieval">
+  <meta name="description" content="Clustering techniques">
   <meta name="author" content="Ahsan Ijaz">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -31,7 +31,7 @@
     <!-- LOGO SLIDE -->
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
-    <h1>Information retrieval</h1>
+    <h1>Clustering techniques</h1>
     <h2></h2>
     <p>Ahsan Ijaz<br/>Ebryx</p>
   </hgroup>
@@ -42,15 +42,358 @@
     <!-- SLIDES -->
     <slide class="" id="slide-1" style="background:;">
   <hgroup>
-    <h2>Information retreival: Applications</h2>
+    <h2>Clustering Applications</h2>
   </hgroup>
   <article data-timings="">
-    
+    <ul>
+<li>Structure information together </li>
+</ul>
+
+<p><img class="center" src= clusterApp.png height = 400></p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Clustering Applications</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Structure information together </li>
+</ul>
+
+<p><img class="center" src= clusterApp2.png height = 400></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Clustering</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Unsupervised learning task</li>
+<li>No labels provided</li>
+<li>Uncovering structure by using only input</li>
+<li><b> Input </b>: docs as a vector \(x_i\)</li>
+<li><b> Output </b>: cluster labels \(z_i\)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Characteristics of a cluster</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul class = "build incremental">
+<li>Center and shape</li>
+<li>Assign observation \(x_i\) (doc) under cluster k (topic label) if 
+
+<ul>
+<li>Score under cluster k is higher than others</li>
+<li>Can think of distance from cluster center as a metric</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Ambiguous clusters</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= ambClusters.png height = 400></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>K-means clustering</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Partitional clustering approach</li>
+<li>Each cluster is associated with a centroid</li>
+<li>Number of cluster, K are specified.</li>
+</ul>
+
+<ol>
+<li>Select K points as initial centroids.</li>
+<li><b> repeat </b></li>
+<li>Form K clusters by assigning all points to the closest center</li>
+<li>Recompute the centroids of each cluster.</li>
+<li><b> Until </b> the centroids don&#39;t change.</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Illustrating k-means</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= illustrateKmeans.png height = 500></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>K-mean clustering details</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Initial centroids are often chosen randomly.</li>
+<li>Clusters produced vary from one run to another.</li>
+<li>‘Closeness’ is measured by a proximity measure e.g., Euclidean distance, cosine similarity, or correlation.</li>
+<li>K-means will converge for common proximity measures mentioned above.</li>
+<li>Most of the convergence happens in the first few iterations.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Importance of choosing initial clusters</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>K-mean clustering can depend heavily on the initial cluster centroids.</p>
+
+<p><img class="center" src= initialCentroids.png height = 500></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Example of 10 clusters (initial centroid)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= 10ClusterC.png height = 500></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Example of 10 clusters</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= 10ClusterB.png height = 500></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Limitations of K-means (differing sizes)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= differSize.png height = 400></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>Limitations of K-means (differing density)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= differDensity.png height = 400></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>Limitations of K-means (nonglobular shapes)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= nonGlobular.png height = 400></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>Other examples of limitations</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= clusterChallen2.png height = 550></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h1>Density based clustering</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>Locate regions of high density separated from one another by region of low density.</p>
+
+<p><img class="center" src= densitybased.png height = 350></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>Notion of density</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Euclidean density
+
+<ul>
+<li>Number of points per unit volume</li>
+</ul></li>
+<li>Probability density</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>Cell-based Euclidean density</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Divide region into a number of rectangular cells of equal volume and define density as # of points in each cell.</li>
+</ul>
+
+<p><img class="center" src= densityEuclideanCell.png height = 400></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>Center-based Euclidean density</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Number of points with a specified radius of the point</li>
+</ul>
+
+<p><img class="center" src= centerBasedED.png height = 400></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>DBSCAN</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Density = number of points within a specified radius (Eps)</li>
+<li>A point is a <font color="red">core point</font> if it has more than a specified <font color="red">number of neighbors (MinPts)</font> within Eps.
+
+<ul>
+<li>These are points that are at the interior of a cluster.</li>
+</ul></li>
+<li>A <font color="red">border point</font> has fewer than MinPts within Eps, but is in the neighborhood of a core point.</li>
+<li>A <font color="red">noise point</font> is any point that is not a core point nor a border point.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:;">
+  <hgroup>
+    <h2>DBSCAN: Core, border and noise points</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img class="center" src= coreBorderNoise.png height = 400></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-22" style="background:;">
+  <hgroup>
+    <h2>DBSCAN Algorithm</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Eliminate noise points</li>
+<li>Perform clustering on the remaining points</li>
+</ul>
+
+<ol>
+<li>Label all points as core, border or noise points.</li>
+<li>Eliminate noise points.</li>
+<li>Put an edge between all core points that are within Eps of each other.</li>
+<li>Make each group of connected points into one cluster.</li>
+<li>Assign each border point to one of the clusters of its associated core points.</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-23" style="background:;">
+  <hgroup>
+    <h2>When DBSCAN works well</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Resistant to noise</li>
+<li>Can handle different shapes and sizes</li>
+</ul>
+
+<p><img class="center" src= workWell.png height = 400></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-24" style="background:;">
+  <hgroup>
+    <h2>When DBSCAN fails</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Varying densities</li>
+<li>High dimensional data</li>
+</ul>
+
+<p><img class="center" src= workbaddb.png height = 400></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-25" style="background:;">
   <article data-timings="">
     
   </article>
@@ -63,14 +406,152 @@
     <ul>
       <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='Information retreival: Applications'>
+        data-slide=1 title='Clustering Applications'>
          1
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='NA'>
+        data-slide=2 title='Clustering Applications'>
          2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Clustering'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Characteristics of a cluster'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Ambiguous clusters'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='K-means clustering'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Illustrating k-means'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='K-mean clustering details'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Importance of choosing initial clusters'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Example of 10 clusters (initial centroid)'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Example of 10 clusters'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Limitations of K-means (differing sizes)'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Limitations of K-means (differing density)'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Limitations of K-means (nonglobular shapes)'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='Other examples of limitations'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='Density based clustering'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='Notion of density'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='Cell-based Euclidean density'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='Center-based Euclidean density'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='DBSCAN'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='DBSCAN: Core, border and noise points'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='DBSCAN Algorithm'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='When DBSCAN works well'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='When DBSCAN fails'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='NA'>
+         25
       </a>
     </li>
   </ul>
