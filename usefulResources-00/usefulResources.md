@@ -84,6 +84,7 @@ output: html_document
 * [kdnuggets](http://www.kdnuggets.com/)
 * [Dataists](http://www.dataists.com/)
 * [A comprehensive list of Data blogs](http://www.cs.waikato.ac.nz/~bernhard/good-machine-learning-blogs.html)
+* [Visual information theory](http://colah.github.io/posts/2015-09-Visual-Information/)
 
 ## Recommended Online courses
 
